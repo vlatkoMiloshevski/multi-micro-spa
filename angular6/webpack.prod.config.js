@@ -56,7 +56,7 @@ module.exports = function (...webpackDevConfigParams) {
                 },
                 {
                     test: /\.css$/,
-                    use: ["style-loader", 'css-loader', 'postcss-loader']
+                    use: ["to-string-loader", 'css-loader']
                 },
                 {
                     test: /\.(jpe?g|png|webp|gif|otf|ttf|woff2?|ani)$/,
@@ -80,14 +80,14 @@ module.exports = function (...webpackDevConfigParams) {
                         path.join(process.cwd(), "src/styles.scss")
                     ],
                     test: /\.scss$|\.sass$/,
-                    use: ["exports-loader?module.exports.toString()", "css-loader", "sass-loader", 'postcss-loader']
+                    use: ["exports-loader?module.exports.toString()", "css-loader", "sass-loader"]
                 },
                 {
                     include: [
                         path.join(process.cwd(), "src/styles.scss")
                     ],
                     test: /\.scss$|\.sass$/,
-                    use: ["style-loader", "css-loader", "sass-loader", 'postcss-loader']
+                    use: ["style-loader", "css-loader", "sass-loader"]
                 }
             ].concat(prodTypescriptLoader)
         },

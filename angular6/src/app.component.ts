@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 @Component({
     selector: 'approot',
     templateUrl: './app.component.html',
+    styleUrls: ['./style.css']
 })
 export class Approot implements OnInit, OnDestroy {
     count: number;

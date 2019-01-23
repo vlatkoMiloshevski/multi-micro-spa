@@ -49,11 +49,11 @@ export function unmount(props) {
 /* @ngInject */
 function getDomElement() {
     // Make sure there is a div for us to render into
-    let el = window.document.getElementById('approot');
+    let el = document.getElementById('approot');
     if (!el) {
-        el = window.document.createElement('approot');
+        el = document.createElement('approot');
         el.id = 'angular6';
-        window.document.getElementById('main-container').appendChild(el);
+        document.getElementById('main-container').appendChild(el);
     }
 
     return el;
