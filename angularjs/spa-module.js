@@ -1,8 +1,8 @@
 import singleSpaAngular1 from 'single-spa-angular1';
 import angular from 'angular';
 
-import './app.module.js';
-import './routes.js';
+import './src/app.module.js';
+import './src/routes.js';
 
 const angularLifecycles = singleSpaAngular1({
     angular,

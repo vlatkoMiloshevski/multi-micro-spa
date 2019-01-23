@@ -15,12 +15,14 @@ const spaProps = {
 };
 
 // This lifecycle function will be called by singleSPA exactly once, right before the registered application is mounted for the first time.
+/* @ngInject */
 export function bootstrap(props) {
     return Promise.resolve();
 }
 
 
 // This lifecycle function is called by singleSPA every time the route for this app is active and the app should be rendered.
+/* @ngInject */
 export function mount(props) {
     getDomElement();
 
@@ -31,6 +33,7 @@ export function mount(props) {
 }
 
 // This lifecycle function will be called when the user navigates away from this apps route.
+/* @ngInject */
 export function unmount(props) {
     return new Promise((resolve, reject) => {
         if (spaProps.Router) {
@@ -43,6 +46,7 @@ export function unmount(props) {
     });
 }
 
+/* @ngInject */
 function getDomElement() {
     // Make sure there is a div for us to render into
     let el = window.document.getElementById('approot');

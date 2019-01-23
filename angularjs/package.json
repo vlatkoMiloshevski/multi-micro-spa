@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "AngularJS App",
   "scripts": {
-    "start": "webpack-dev-server --port 9001",
-    "build": "webpack -p --progress"
+    "start": "webpack-dev-server --env dev --port 9001",
+    "start-prod": "webpack-dev-server --env prod --port 9001",
+    "build": "webpack --env prod --progress"
   },
   "author": "Vlatko Miloshevski",
   "license": "MIT",
@@ -14,6 +15,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "ng-annotate-loader": "^0.6.1",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.2"
   },

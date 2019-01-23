@@ -5,8 +5,9 @@ angular
     .component('root', {
         template: require('./app.template.html'),
         controllerAs: 'vm',
-        controller($http) {
+        controller: ['$http', function ($http) {
             var vm = this;
+            debugger;
             vm.angularImg = '/angularjs/assets/angularjs-logo.jpg';
 
             $http.get('api/usernameList')
@@ -20,5 +21,5 @@ angular
                 console.log(data);
             }
 
-        }
+        }]
     });

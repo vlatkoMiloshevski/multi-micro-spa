@@ -34,6 +34,7 @@ enableProdMode();
 	bootstrap: [Approot]
 })
 export class MainModule {
+    /*@ngInject*/
 	constructor() {
 	}
 }

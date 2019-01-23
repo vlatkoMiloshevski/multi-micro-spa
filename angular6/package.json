@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Angular6 App",
   "scripts": {
-    "start": "webpack-dev-server --port 9006",
-    "build": "webpack -p --progress --env.prod"
+    "start": "webpack-dev-server --env dev --port 9006",
+    "start-prod": "webpack-dev-server --env prod --port 9006",
+    "build": "webpack --env prod --progress"
   },
   "author": "Vlatko Miloshevski",
   "license": "MIT",
@@ -42,7 +43,7 @@
     "es6-promise": "^4.2.4",
     "raw-loader": "^1.0.0",
     "redux": "^4.0.0",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.2.2"
   }
 }
