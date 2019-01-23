@@ -4,8 +4,9 @@
   "description": "Angular6 App",
   "scripts": {
     "start": "webpack-dev-server --env dev --port 9006",
-    "start-prod": "webpack-dev-server --env prod --port 9006",
-    "build": "webpack --env prod --progress"
+    "start:prod": "webpack-dev-server --env prod --port 9006",
+    "build": "webpack --env prod --progress",
+    "build:prod": "webpack -p --env prod --progress"
   },
   "author": "Vlatko Miloshevski",
   "license": "MIT",

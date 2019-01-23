@@ -1,5 +1,4 @@
 const path = require('path');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 module.exports = function (...webpackDevConfigParams) {
 

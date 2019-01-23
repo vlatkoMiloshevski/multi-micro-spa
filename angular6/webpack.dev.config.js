@@ -24,7 +24,7 @@ module.exports = function (...webpackDevConfigParams ) {
         new AngularCompilerPlugin({
             mainPath: path.resolve(__dirname, 'src/spa-module.ts'),
             tsConfigPath: path.resolve(__dirname, 'tsconfig.json'),
-            sourceMap: false,
+            sourceMap: true,
             skipCodeGeneration: false,
             platform: 0,
             hostReplacementPaths: {
@@ -93,7 +93,7 @@ module.exports = function (...webpackDevConfigParams ) {
         optimization: {
             minimizer: [
                 new UglifyJsPlugin({
-                    sourceMap: false,
+                    sourceMap: true,
                     parallel: true,
                     uglifyOptions: {
                         ecma: 6,

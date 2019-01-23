@@ -8,29 +8,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = function (...webpackDevConfigParams) {
 
     const prodTypescriptLoader = [
-        // {
-        //     test: /\.js$/,
-        //     use: [
-        //         {
-        //             "loader": "@angular-devkit/build-optimizer/webpack-loader",
-        //             "options": {
-        //                 "sourceMap": false
-        //             }
-        //         }
-        //     ]
-        // },
-        // {
-        //     test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-        //     use: [
-        //         {
-        //             "loader": "@angular-devkit/build-optimizer/webpack-loader",
-        //             "options": {
-        //                 "sourceMap": false
-        //             }
-        //         },
-        //         '@ngtools/webpack'
-        //     ]
-        // },
         {
             test: /\.ts$/,
             loader: '@ngtools/webpack'
