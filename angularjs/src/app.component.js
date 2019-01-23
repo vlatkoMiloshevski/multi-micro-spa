@@ -7,7 +7,6 @@ angular
         controllerAs: 'vm',
         controller: ['$http', function ($http) {
             var vm = this;
-            debugger;
             vm.angularImg = '/angularjs/assets/angularjs-logo.jpg';
 
             $http.get('api/usernameList')

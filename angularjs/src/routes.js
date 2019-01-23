@@ -1,6 +1,7 @@
 import angular from 'angular';
 import './app.component.js';
 import './nested.component.js';
+require('../assets/style.css');
 
 angular
     .module('app')
