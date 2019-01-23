@@ -1,0 +1,19 @@
+<div>
+    <img ng-src="{{vm.angularImg}}" style="width: 100px;" />
+    <br />
+    This is Angular JS application
+</div>
+<br>
+
+<div>
+    <a href="#/angularjs/nested">Nested rotute</a>&nbsp;
+    <a href="#/angular6/nested">Angular 6 Nested route</a>
+</div>
+
+<ui-view />
+
+<div>
+    <p ng-repeat="user in vm.data">
+        <b>{{user.id}}:</b> <span>{{user.name}}</span>
+    </p>
+</div>

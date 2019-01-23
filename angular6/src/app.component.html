@@ -1,0 +1,17 @@
+<div>
+    <img [src]="angularImg" style="width: 100px;" />
+    <br />
+    This is Angular 6 application
+</div>
+<br />
+
+<a [routerLink]="['/nested']" routerLinkActive="active">Nested route</a>&nbsp;
+<a href="#/angularjs/nested"> AngularJS Nested route</a>
+
+<router-outlet></router-outlet>
+
+<div>
+    <p *ngFor="let user of data">
+        <b>{{user.id}}:</b> <span>{{user.email}}</span>
+    </p>
+</div>
