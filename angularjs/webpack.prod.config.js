@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function (...webpackDevConfigParams) {
 
@@ -9,11 +8,11 @@ module.exports = function (...webpackDevConfigParams) {
 			spaModule: 'spa-module.js'
 		},
 		output: {
-			filename: `bundle.js`,
-			path: path.resolve(__dirname, 'test'),
+			filename: `[name].js`,
+			path: path.resolve(__dirname, 'release'),
 			chunkFilename: `[name].bundle.js`,
 			libraryTarget: 'umd',
-			library: 'angularjs/src/'
+			library: 'angularjs'
 		},
 		module: {
 			rules: [
@@ -26,6 +25,13 @@ module.exports = function (...webpackDevConfigParams) {
 					test: /\.html$/,
 					exclude: [path.resolve(__dirname, 'node_modules')],
 					loader: 'html-loader',
+				},
+				{
+					test: /\.css$/,
+					use: [
+						'style-loader', // the order is important. it executes in reverse order !
+						'css-loader' // this will load first !
+					]
 				}
 			]
 		},
@@ -42,14 +48,6 @@ module.exports = function (...webpackDevConfigParams) {
 		externals: [
 		],
 		plugins: [
-			new UglifyJsPlugin({
-
-			}),
-			new webpack.DefinePlugin({
-				'process.env': {
-					'NODE_ENV': JSON.stringify("production")
-				}
-			})
 		],
 
 	};

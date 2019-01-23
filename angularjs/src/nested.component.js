@@ -5,7 +5,7 @@ angular
     .component('nested', {
         template: `<div style="margin-top:20px">Nested is working!</div>`,
         controllerAs: 'vm',
-        controller() {
+        controller: [function () {
             let vm = this;
-        },
+        }],
     });

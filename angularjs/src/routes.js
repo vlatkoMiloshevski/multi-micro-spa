@@ -4,7 +4,7 @@ import './nested.component.js';
 
 angular
     .module('app')
-    .config(($stateProvider, $locationProvider) => {
+    .config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 
         $locationProvider.hashPrefix('');
         $locationProvider.html5Mode({
@@ -21,4 +21,4 @@ angular
                 url: '/nested',
                 template: '<nested />',
             })
-    });
+    }]);
