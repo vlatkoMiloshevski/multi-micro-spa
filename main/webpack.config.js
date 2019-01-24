@@ -63,6 +63,10 @@ module.exports = {
                 target: "http://localhost:9006",
                 pathRewrite: { "^/angular6": "" }
             },
+            "/ag6doubler": {
+                target: "http://localhost:9066",
+                pathRewrite: { "^/ag6doubler": "" }
+            },
             "/react": {
                 target: "http://localhost:9009",
                 pathRewrite: { "^/react": "" }

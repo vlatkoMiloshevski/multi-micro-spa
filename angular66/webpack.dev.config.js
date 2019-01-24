@@ -5,18 +5,17 @@ const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = function (...webpackDevConfigParams) {
 
-    const prodTypescriptLoader = [
+module.exports = function (...webpackDevConfigParams ) {
+    const devTypescriptLoader = [
         {
             test: /\.ts$/,
             loader: '@ngtools/webpack'
         }
     ];
-    
-    let env = webpackDevConfigParams.env;  
-    const analyzeBundle = !!(env && env.analyzeBundle);
 
+    let env = webpackDevConfigParams.env;    
+    const analyzeBundle = !!(env && env.analyzeBundle);
     const plugins = [
         new ContextReplacementPlugin(
             /(.+)?angular(\\|\/)core(.+)?/,
@@ -26,10 +25,10 @@ module.exports = function (...webpackDevConfigParams) {
             mainPath: path.resolve(__dirname, 'src/spa-module.ts'),
             tsConfigPath: path.resolve(__dirname, 'tsconfig.json'),
             sourceMap: true,
-            skipCodeGeneration: true,
+            skipCodeGeneration: false,
             platform: 0,
             hostReplacementPaths: {
-                "environments/environment.ts": "environments/environment.prod.ts"
+                "environments/environment.ts": "environments/environment.ts"
             }
         })
     ];
@@ -47,7 +46,7 @@ module.exports = function (...webpackDevConfigParams) {
             filename: '[name].js',
             path: path.resolve(__dirname, 'release'),
             libraryTarget: 'umd',
-            library: 'angular6'
+            library: 'ag6doubler'
         },
         module: {
             rules: [
@@ -65,7 +64,7 @@ module.exports = function (...webpackDevConfigParams) {
                     options: {
                         name: "[name].[ext]",
                         limit: 10000,
-                        publicPath: '/angular6/'
+                        publicPath: '/ag6doubler/'
                     }
                 },
                 {
@@ -73,7 +72,7 @@ module.exports = function (...webpackDevConfigParams) {
                     loader: "file-loader",
                     options: {
                         name: "[name].[ext]",
-                        publicPath: '/angular6/'
+                        publicPath: '/ag6doubler/'
                     }
                 },
                 {
@@ -90,12 +89,12 @@ module.exports = function (...webpackDevConfigParams) {
                     test: /\.scss$|\.sass$/,
                     use: ["style-loader", "css-loader", "sass-loader"]
                 }
-            ].concat(prodTypescriptLoader)
+            ].concat(devTypescriptLoader)
         },
         optimization: {
             minimizer: [
                 new UglifyJsPlugin({
-                    sourceMap: false,
+                    sourceMap: true,
                     parallel: true,
                     uglifyOptions: {
                         ecma: 6,
@@ -115,14 +114,14 @@ module.exports = function (...webpackDevConfigParams) {
             ]
         },
         resolve: {
-            extensions: [".ts", ".js"],
+            extensions: [".ts", ".js", '.css'],
             modules: [
                 __dirname,
                 'node_modules'
             ]
         },
-        mode: 'production',
-        devtool: 'none',
+        mode: 'development',
+        devtool: 'inline-sourcemap',
         externals: [],
         plugins: plugins,
     }

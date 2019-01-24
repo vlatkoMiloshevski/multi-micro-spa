@@ -39,7 +39,8 @@ module.exports = function (...webpackDevConfigParams ) {
 
     return {
         entry: {
-            spaModule: 'src/spa-module.ts'
+            spaModule: 'src/spa-module.ts',
+            store: 'src/store.ts'
         },
         output: {
             filename: '[name].js',

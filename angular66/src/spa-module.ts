@@ -17,6 +17,7 @@ const spaProps = {
 // This lifecycle function will be called by singleSPA exactly once, right before the registered application is mounted for the first time.
 /* @ngInject */
 export function bootstrap(props) {
+    ;
     return Promise.resolve();
 }
 
@@ -25,7 +26,7 @@ export function bootstrap(props) {
 /* @ngInject */
 export function mount(props) {
     getDomElement();
-
+    ;
     return platformBrowserDynamic([
         { provide: 'localStoreRef', useValue: props.store },
         { provide: 'globalEventDispatcherRef', useValue: props.globalEventDistributor }
@@ -51,10 +52,10 @@ export function unmount(props) {
 /* @ngInject */
 function getDomElement() {
     // Make sure there is a div for us to render into
-    let el = document.getElementById('approot');
+    let el = document.getElementById('approot66');
     if (!el) {
-        el = document.createElement('approot');
-        el.id = 'angular6';
+        el = document.createElement('approot66');
+        el.id = 'ag6doubler';
         document.getElementById('main-container').appendChild(el);
     }
 

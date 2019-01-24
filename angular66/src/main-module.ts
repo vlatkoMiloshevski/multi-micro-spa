@@ -1,14 +1,14 @@
 import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Approot } from './app.component';
+import { Approot66 } from './app66.component';
 import { Nested } from './nested.component';
 import { enableProdMode } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from "@angular/common";
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { HttpClientModule } from '@angular/common/http'
-import { CounterActions, IAppState } from './store';
-import { Globals } from './globals.service';
+import { Globals } from './spa-intra-communicator';
+import { IAppState, CounterActions } from './store';
 
 const appRoutes: Routes = [
 	{
@@ -28,22 +28,22 @@ enableProdMode();
 		}),
 		NgReduxModule
 	],
-	providers: [{ provide: APP_BASE_HREF, useValue: '/angular6/' }, CounterActions, Globals],
+	providers: [{ provide: APP_BASE_HREF, useValue: '/ag6doubler/' }, CounterActions, Globals],
 	declarations: [
-		Approot,
+		Approot66,
 		Nested
 	],
-	bootstrap: [Approot]
+	bootstrap: [Approot66]
 })
 export class MainModule {
-    /*@ngInject*/
 	constructor(
 		private ngRedux: NgRedux<IAppState>,
 		private globals: Globals,
 		@Inject('localStoreRef') private localStoreRef: any,
-		@Inject('globalEventDispatcherRef') private globalEventDispatcherRef: any
-	) {
-		this.ngRedux.provideStore(localStoreRef);
-		this.globals.globalEventDistributor = globalEventDispatcherRef;
+		@Inject('globalEventDispatcherRef') private globalEventDistributorRef: any
+	) { 
+		;
+		ngRedux.provideStore(localStoreRef);
+		globals.globalEventDistributor = globalEventDistributorRef;
 	}
 }

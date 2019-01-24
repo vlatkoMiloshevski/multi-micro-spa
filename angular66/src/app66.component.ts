@@ -3,30 +3,31 @@ import * as angularImg from "../assets/angular-logo.png";
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
-import { Globals } from './globals.service';
-import { CounterActions, IAppState } from './store';
+import { IAppState, CounterActions } from './store';
+import { Globals } from './spa-intra-communicator';
 
 @Component({
-    selector: 'approot',
-    templateUrl: './app.component.html',
+    selector: 'approot66',
+    templateUrl: './app66.component.html',
     styleUrls: ['./style.css']
 })
-export class Approot implements OnInit, OnDestroy {
-    helloMessage: string;
+export class Approot66 implements OnInit, OnDestroy {
     angularImg: any;
     data: any;
     subscription;
+    storeSubscription: any;
+    regards: string;
+    helloMessage: string;
 
     constructor(
+        private $http: HttpClient,
         @Inject(forwardRef(() => NgRedux)) private ngRedux: NgRedux<IAppState>,
         @Inject(forwardRef(() => CounterActions)) private actions: CounterActions,
-        @Inject(forwardRef(() => Globals)) private globals: Globals,
-        private $http: HttpClient
+        @Inject(forwardRef(() => Globals)) private globals: Globals
     ) {
-        this.subscription = this.ngRedux.select<string>('helloMessage')
-            .subscribe(helloMessage => this.helloMessage = helloMessage);
-
         this.angularImg = angularImg;
+        this.storeSubscription = this.ngRedux.select<string>('helloMessage')
+            .subscribe(helloMessage => this.helloMessage = helloMessage);
     }
 
     ngOnInit() {
@@ -42,19 +43,20 @@ export class Approot implements OnInit, OnDestroy {
         this.data = success;
     }
 
-    sayHello() {
-        // change the state just in the SPA scope
-        this.ngRedux.dispatch(this.actions.sayHello());
-        // change the state on INTRA level
-        this.globals.globalEventDistributor.dispatch(this.actions.sayHello());
-    }
-
     logInfo(data) {
         console.log(data);
     }
 
+    helloFromTheOtherSide() {
+       // change the state just in the SPA scope
+       this.ngRedux.dispatch(this.actions.helloFromTheOtherSide());
+       // change the state on INTRA level
+       this.globals.globalEventDistributor.dispatch(this.actions.helloFromTheOtherSide());
+    }
+
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.storeSubscription.unsubscribe();
     }
 
 }
