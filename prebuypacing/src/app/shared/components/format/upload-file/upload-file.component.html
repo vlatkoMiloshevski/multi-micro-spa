@@ -1,0 +1,9 @@
+<a *ngIf="value"
+   href="{{value}}"
+   target="_blank"
+   [ngClass]="{ 'hmx-link-upload-blue': !isRed, 'hmx-link-upload-red': isRed }"
+>
+  <mat-icon class="hmx-upload-icon">file_upload</mat-icon>
+</a>
+
+

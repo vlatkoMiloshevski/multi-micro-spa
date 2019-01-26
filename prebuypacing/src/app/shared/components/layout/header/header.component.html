@@ -1,0 +1,36 @@
+<mat-toolbar  class="hmx-top-navigation mat-elevation-z3" *ngIf="user">
+  <div class="hmx-logo-container" >
+    <span class="hmx-logo">
+       Buyer<span class="hmx-logo-title-color"> Dashboard</span>
+     <span class="hmx-logo-tm-symbol">TM</span>
+    </span>
+  </div>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="hmx-fill-remaining-space"></span>
+
+  <ng-template [ngIf]="user">
+
+  <span class="hmx-user-container" >
+    <span class="hmx-username">Welcome&nbsp;
+      {{ user.name }}
+    </span>
+  </span>
+
+  <div class="button-row">
+    <button class="hmx-user-initials" mat-mini-fab>
+      {{ user.name | convertToInitials }}
+    </button>
+  </div>
+
+  <span class="hmx-divider"></span>
+
+  <span class="hmx-sign-out-icon">
+    <button mat-icon-button
+            (click)="onLogout()">
+       <mat-icon>exit_to_app</mat-icon></button>
+  </span>
+
+  </ng-template>
+
+</mat-toolbar>

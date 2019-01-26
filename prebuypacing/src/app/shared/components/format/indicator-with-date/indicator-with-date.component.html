@@ -1,0 +1,14 @@
+<mat-icon *ngIf="allAnsweredItems"
+          class="hmx-green-check"
+          [matTooltip]="tooltipDate | date:dateFormat"
+          matTooltipPosition="above"
+          >check_circle</mat-icon>
+
+<mat-chip-list
+  *ngIf="hasUnrespondedItems"
+  [matTooltip]="tooltipDate | date:dateFormat"
+  matTooltipPosition="above"
+  class="hmx-unresponded-items-indicator"
+>
+  <mat-chip class="hmx-badge-pill">{{ value.value }}</mat-chip>
+</mat-chip-list>

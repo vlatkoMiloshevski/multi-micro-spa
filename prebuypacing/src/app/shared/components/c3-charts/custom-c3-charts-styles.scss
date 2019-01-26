@@ -1,0 +1,126 @@
+@import '../../../../sass/variables';
+
+.c3 {
+
+  path, line {
+    stroke: $chart-grid-color;
+  }
+
+  &-grid {
+
+    .c3-ygrids {
+
+      .c3-ygrid {
+        stroke-dasharray: none;
+      }
+    }
+
+    .c3-xgrid-focus {
+      display: none;
+    }
+  }
+
+  &-axis {
+
+    &-y, &-x, &-y2 {
+
+      .tick {
+
+        line {
+          display: none;
+        }
+
+        text {
+          fill: $chart-tick-color;
+        }
+      }
+    }
+
+    &-y, &-y2 {
+
+      path {
+        display: none;
+      }
+
+      &-label {
+        fill: $chart-text-color;
+        font: 700 14px sans-serif;
+      }
+    }
+
+    &-x {
+
+      .tick {
+
+        text {
+          font-weight: 700;
+          fill: $chart-text-color;
+        }
+      }
+    }
+  }
+
+  &-chart {
+
+    &-bar {
+
+      .c3-shapes {
+
+        .c3-shape {
+          opacity: 0.9 !important;
+        }
+      }
+    }
+  }
+
+  &-tooltip-container {
+
+    &--fixed {
+      position: fixed !important;
+    }
+
+    &-inner {
+      font-size: 13px;
+      background: black;
+      color: $white;
+      border-radius: 5px;
+      padding: 10px 10px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        bottom: -10px;
+        border: 5px solid transparent;
+        border-top: 5px solid $black;
+      }
+
+      &--triangle-right {
+        &:after {
+          left: auto;
+          right: 10px;
+        }
+      }
+
+      &--triangle-top {
+        &:after {
+          bottom: auto;
+          top: -5px;
+          border-top: 0;
+          border-bottom: 5px solid black;
+        }
+      }
+    }
+  }
+
+}
+
+.custom-legend {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+
+  .not-included-label {
+    opacity: 0.4;
+  }
+}

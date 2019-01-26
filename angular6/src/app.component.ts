@@ -30,7 +30,8 @@ export class Approot implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription = this.$http.get('api/emailList')
+        // $http.get('/api/firstSubmission/' + campaignId)
+        this.subscription = this.$http.get('api/firstSubmission/6')
             .pipe(tap())
             .subscribe(
                 this.bindResponseDataToViewModel.bind(this),

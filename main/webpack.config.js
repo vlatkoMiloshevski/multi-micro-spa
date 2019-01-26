@@ -71,6 +71,10 @@ module.exports = {
                 target: "http://localhost:9009",
                 pathRewrite: { "^/react": "" }
             },
+            "/prebuypacing": {
+                target: "http://localhost:9099",
+                pathRewrite: { "^/prebuypacing": "" }
+            },
             '/api': {
                 target: "http://localhost:7000",
             },

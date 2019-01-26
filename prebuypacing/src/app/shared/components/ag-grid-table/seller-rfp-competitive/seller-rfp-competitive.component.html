@@ -1,0 +1,37 @@
+<div fxLayout
+     class="hmx-competitive-container"
+     *ngIf="!isEmpty && !isSplitMode">
+  {{params.value | json}}
+  <div fxFlex
+       *ngIf="isNumberFormat">
+    <hmx-format-indicator
+        [value]="params.value"></hmx-format-indicator>
+  </div>
+
+  <div fxFlex
+       *ngIf="!isNumberFormat">
+    <hmx-table-link-launch
+        [value]="params.value"></hmx-table-link-launch>
+  </div>
+</div>
+<div fxLayout
+     class="hmx-rfp-container"
+     *ngIf="!isEmpty && isSplitMode">
+  <div fxFlex
+       *ngIf="params.node.data.rfpLink"
+       class="hmx-rfp-table-link-launch-container">
+    <hmx-table-link-launch
+        [value]="params.node.data.rfpLink"
+        title="{{params.node.data.rfpLink}}"></hmx-table-link-launch>
+  </div>
+  <div fxFlex
+      *ngIf="params.node.data.rfpDate">
+    <hmx-date-format [value]="params.node.data.rfpDate"></hmx-date-format>
+  </div>
+  <div fxFlex
+       class="hmx-rfp-format-indicator-container">
+    <hmx-format-indicator
+        [value]="params.value"
+        title="{{params.value}}"></hmx-format-indicator>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div *ngIf="!isEmpty">
+  <div fxLayout
+       *ngIf="!isNumberFormat">
+    <div fxFlex="90" class="hmx-seller-proposal-date">
+      <hmx-date-format
+        [value]="params.value"
+        title="{{params.value | date:'MM/dd/y'}}"></hmx-date-format>
+    </div>
+    <div fxFlex="10">
+      <hmx-format-upload-file
+        [value]="params.node.data.proposalLink"
+        [color]="'blue'"
+        title="{{params.node.data.proposalLink}}"></hmx-format-upload-file>
+    </div>
+  </div>
+</div>

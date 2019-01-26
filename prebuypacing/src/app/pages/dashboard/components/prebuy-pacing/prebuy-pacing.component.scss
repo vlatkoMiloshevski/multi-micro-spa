@@ -1,0 +1,39 @@
+@import '~src/sass/variables';
+
+.hmx-ag-grid-material .ag-cell {
+  line-height: 30px;
+}
+
+::ng-deep {
+
+  .ag {
+
+    &-header-cell {
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    &-row {
+      background: white;
+
+      span.ag-group-value {
+        color: $linkColor;
+        display: inline-block;
+      }
+
+      &-level-1 {
+        & > .level-1-backgrounded-cell {
+          background: $odd-row-background-color;
+        }
+      }
+    }
+
+    &-cell {
+
+      &.negative-value {
+        color: $red;
+      }
+    }
+  }
+}

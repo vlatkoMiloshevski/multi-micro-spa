@@ -1,0 +1,49 @@
+<button class="mat-icon-button" [matMenuTriggerFor]="columnsMenu">
+      <span class="mat-button-wrapper">
+        <mat-icon>view_column</mat-icon>
+      </span>
+</button>
+<mat-menu #columnsMenu="matMenu" class="custom" overlapTrigger="true" xPosition="before">
+  <div class="mat-menu-inner" fxLayout="column" (click)="$event.stopPropagation();">
+    <div fxLayout="row" fxLayoutAlign="start center" class="mat-menu-item">
+      <mat-icon>view_column</mat-icon> COLUMNS
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutAlign="start center" class="mat-menu-item">
+      <mat-form-field floatLabel="never">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>Keyword(s)...</mat-label>
+        <input
+          matInput
+          placeholder="Keyword(s)..."
+          (keyup)="onFilterTextBoxChanged($event)"
+          id="filter-text-box"
+          [(ngModel)]="keyword"
+        >
+      </mat-form-field>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutAlign="start center" class="mat-menu-item">
+      <mat-checkbox
+        [checked]="allColumnsIsVisible"
+        (change)="onSelectAllColumn($event)"
+        disableRipple="true">Select All</mat-checkbox>
+    </div>
+    <hr>
+    <div class="mat-menu-checkboxes">
+      <div
+        *ngFor="let column of fieldsStorageList"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        class="mat-menu-item"
+      >
+        <mat-checkbox
+          [checked]="!column.hide"
+          (change)="onClickColumn($event, column)"
+          disableRipple="true">{{ column.headerName }}</mat-checkbox>
+      </div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutAlign="end center" class="mat-menu-item reset-menu-item"><a href="#" class="reset-columns-link" (click)="onResetColumns($event)">Reset Columns</a></div>
+  </div>
+</mat-menu>

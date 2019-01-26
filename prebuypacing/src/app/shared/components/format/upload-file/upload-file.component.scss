@@ -1,0 +1,17 @@
+$icon-red-color: #D0021B;
+$icon-blue-color: #2284E3;
+
+.hmx-link-upload-blue {
+  color: $icon-blue-color;
+}
+
+.hmx-link-upload-red {
+  color: $icon-red-color;
+}
+
+.hmx-upload-icon {
+  padding-top: 6px;
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+}
