@@ -13,14 +13,18 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
-   {
-     path: 'login',
-     component: LoginFormComponent
-   }
+  {
+    path: 'login',
+    component: LoginFormComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [
+    RouterModule.forRoot(appRoutes, {
+      useHash: true
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
