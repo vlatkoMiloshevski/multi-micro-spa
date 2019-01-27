@@ -8,8 +8,9 @@ import { SpaGlobalCommunicator } from './spa-intra-communicator'
 
     loadingPromises.push(bootstrapSpa('angularjs', '/angularjs', '/angularjs/spaModule.js', null, null));
     loadingPromises.push(bootstrapSpa('prebuypacing', '/prebuypacing', '/prebuypacing/spaModule.js', null, null));
-    // loadingPromises.push(bootstrapSpa('angular6', '/angular6', '/angular6/spaModule.js', '/angular6/store.js', spaGlobalCommunicator)); //, '/angular6/store.js', globalEventDistributor));
-    // loadingPromises.push(bootstrapSpa('ag6doubler', '/ag6doubler', '/ag6doubler/spaModule.js', '/ag6doubler/store.js', spaGlobalCommunicator));
+    loadingPromises.push(bootstrapSpa('react', '/react', '/react/spaModule.js', null, null));
+    loadingPromises.push(bootstrapSpa('angular6', '/angular6', '/angular6/spaModule.js', '/angular6/store.js', spaGlobalCommunicator)); //, '/angular6/store.js', globalEventDistributor));
+    loadingPromises.push(bootstrapSpa('ag6doubler', '/ag6doubler', '/ag6doubler/spaModule.js', '/ag6doubler/store.js', spaGlobalCommunicator));
     // wait until all stores are loaded and all apps are registered with singleSpa
     await Promise.all(loadingPromises);
 
