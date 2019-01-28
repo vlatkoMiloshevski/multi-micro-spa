@@ -4,6 +4,7 @@ import { enableProdMode } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
 import { AppModule } from './app/app.module';
+import 'hammerjs';
 
 if (environment.production) {
     enableProdMode();

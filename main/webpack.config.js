@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: 'src/spa-bootstrapper-module.js',
+        main: 'src/spa-bootstrapper-module.js'
     },
     output: {
         publicPath: '',
@@ -74,6 +74,10 @@ module.exports = {
             "/prebuypacing": {
                 target: "http://localhost:9099",
                 pathRewrite: { "^/prebuypacing": "" }
+            },
+            "/auth": {
+                target: "http://localhost:9091",
+                pathRewrite: { "^/auth": "" }
             },
             '/api': {
                 target: "http://localhost:7000",

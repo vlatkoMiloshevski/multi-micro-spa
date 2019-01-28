@@ -16,6 +16,7 @@ export class Approot implements OnInit, OnDestroy {
     angularImg: any;
     data: any;
     subscription;
+    test;
 
     constructor(
         @Inject(forwardRef(() => NgRedux)) private ngRedux: NgRedux<IAppState>,

@@ -14,7 +14,7 @@
 <br />
 
 <a [routerLink]="['/nested']" routerLinkActive="active">Nested route</a>&nbsp;
-<a href="#/angularjs/nested"> AngularJS Nested route</a> 
+<a href="#/angularjs/nested"> AngularJS Nested route</a>
 
 <br />
 
@@ -23,5 +23,11 @@
 <div>
     <p *ngFor="let user of data">
         <b>{{user.id}}:</b> <span>{{user.email}}</span>
-    </p> 
+    </p>
 </div>
+
+
+<mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>test title</mat-label>
+    <input matInput [(ngModel)]="test" name="test">
+</mat-form-field>

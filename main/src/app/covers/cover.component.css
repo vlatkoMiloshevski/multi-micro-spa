@@ -1,0 +1,27 @@
+.covers-container{
+    padding: 20px;
+}
+
+.cover-body{
+    display: flex;
+    /* it will wrap all the items in a newly created whenever overflow occurs */
+    flex-wrap: wrap; 
+    /* this will justify the context in the content */
+    justify-content: center;
+}
+
+.cover-body-item > .cover-title{
+    display: flex;
+    height: 100px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.cover-body-item > .cover-title > h4{
+    margin: auto;
+}
+
+.cover-body-item{
+    margin:10px;
+}
+

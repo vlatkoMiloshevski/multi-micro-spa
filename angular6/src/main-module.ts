@@ -9,6 +9,9 @@ import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { HttpClientModule } from '@angular/common/http'
 import { CounterActions, IAppState } from './store';
 import { Globals } from './globals.service';
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
 	{
@@ -21,12 +24,15 @@ enableProdMode();
 
 @NgModule({
 	imports: [
+		BrowserAnimationsModule,
 		HttpClientModule,
 		BrowserModule,
 		RouterModule.forRoot(appRoutes, {
 			useHash: true
 		}),
-		NgReduxModule
+		NgReduxModule,
+		MaterialModule,
+		FormsModule
 	],
 	providers: [{ provide: APP_BASE_HREF, useValue: '/angular6/' }, CounterActions, Globals],
 	declarations: [
