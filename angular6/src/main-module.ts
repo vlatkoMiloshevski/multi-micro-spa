@@ -1,6 +1,6 @@
 import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Approot } from './app.component';
+import { Approot6 } from './approot6.component';
 import { Nested } from './nested.component';
 import { enableProdMode } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
@@ -36,10 +36,10 @@ enableProdMode();
 	],
 	providers: [{ provide: APP_BASE_HREF, useValue: '/angular6/' }, CounterActions, Globals],
 	declarations: [
-		Approot,
+		Approot6,
 		Nested
 	],
-	bootstrap: [Approot]
+	bootstrap: [Approot6]
 })
 export class MainModule {
     /*@ngInject*/

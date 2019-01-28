@@ -37,6 +37,7 @@ export function mount(props) {
 // This lifecycle function will be called when the user navigates away from this apps route.
 /* @ngInject */
 export function unmount(props) {
+    
     return new Promise((resolve, reject) => {
         if (spaProps.Router) {
             const routerRef = spaProps.bootstrappedModule.injector.get(spaProps.Router);
@@ -44,6 +45,7 @@ export function unmount(props) {
         }
         spaProps.bootstrappedModule.destroy();
         delete spaProps.bootstrappedModule;
+        document.getElementById('approot6').innerHTML='';
         resolve();
     });
 }
@@ -51,10 +53,10 @@ export function unmount(props) {
 /* @ngInject */
 function getDomElement() {
     // Make sure there is a div for us to render into
-    let el = document.getElementById('approot');
+    let el = document.getElementById('approot6');
     if (!el) {
-        el = document.createElement('approot');
-        el.id = 'angular6';
+        el = document.createElement('approot6');
+        el.id = 'approot6';
         document.getElementById('main-container').appendChild(el);
     }
 

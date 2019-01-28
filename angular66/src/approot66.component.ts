@@ -8,7 +8,7 @@ import { Globals } from './spa-intra-communicator';
 
 @Component({
     selector: 'approot66',
-    templateUrl: './app66.component.html',
+    templateUrl: './approot66.component.html',
     styleUrls: ['./style.css']
 })
 export class Approot66 implements OnInit, OnDestroy {

@@ -45,6 +45,7 @@ export function unmount(props) {
         }
         spaProps.bootstrappedModule.destroy();
         delete spaProps.bootstrappedModule;
+        document.getElementById('hmx-root').innerHTML='';
         resolve();
     });
 }

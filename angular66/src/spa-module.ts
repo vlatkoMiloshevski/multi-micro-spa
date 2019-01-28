@@ -45,6 +45,7 @@ export function unmount(props) {
         }
         spaProps.bootstrappedModule.destroy();
         delete spaProps.bootstrappedModule;
+        document.getElementById('approot66').innerHTML='';
         resolve();
     });
 }
@@ -55,7 +56,7 @@ function getDomElement() {
     let el = document.getElementById('approot66');
     if (!el) {
         el = document.createElement('approot66');
-        el.id = 'ag6doubler';
+        el.id = 'approot66';
         document.getElementById('main-container').appendChild(el);
     }
 

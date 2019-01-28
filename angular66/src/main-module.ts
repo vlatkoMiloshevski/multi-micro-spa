@@ -1,6 +1,6 @@
 import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Approot66 } from './app66.component';
+import { Approot66 } from './approot66.component';
 import { Nested } from './nested.component';
 import { enableProdMode } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
@@ -28,7 +28,7 @@ enableProdMode();
 		}),
 		NgReduxModule
 	],
-	providers: [{ provide: APP_BASE_HREF, useValue: '/ag6doubler/' }, CounterActions, Globals],
+	providers: [{ provide: APP_BASE_HREF, useValue: '/angular66/' }, CounterActions, Globals],
 	declarations: [
 		Approot66,
 		Nested

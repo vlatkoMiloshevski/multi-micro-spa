@@ -7,11 +7,11 @@ import { Globals } from './globals.service';
 import { CounterActions, IAppState } from './store';
 
 @Component({
-    selector: 'approot',
-    templateUrl: './app.component.html',
+    selector: 'approot6',
+    templateUrl: './approot6.component.html',
     styleUrls: ['./style.css']
 })
-export class Approot implements OnInit, OnDestroy {
+export class Approot6 implements OnInit, OnDestroy {
     helloMessage: string;
     angularImg: any;
     data: any;

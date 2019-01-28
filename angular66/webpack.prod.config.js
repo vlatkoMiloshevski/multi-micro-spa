@@ -47,7 +47,7 @@ module.exports = function (...webpackDevConfigParams) {
             filename: '[name].js',
             path: path.resolve(__dirname, 'release'),
             libraryTarget: 'umd',
-            library: 'ag6doubler'
+            library: 'angular66'
         },
         module: {
             rules: [
@@ -65,7 +65,7 @@ module.exports = function (...webpackDevConfigParams) {
                     options: {
                         name: "[name].[ext]",
                         limit: 10000,
-                        publicPath: '/ag6doubler/'
+                        publicPath: '/angular66/'
                     }
                 },
                 {
@@ -73,7 +73,7 @@ module.exports = function (...webpackDevConfigParams) {
                     loader: "file-loader",
                     options: {
                         name: "[name].[ext]",
-                        publicPath: '/ag6doubler/'
+                        publicPath: '/angular66/'
                     }
                 },
                 {
