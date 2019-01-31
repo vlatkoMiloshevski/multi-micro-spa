@@ -72,7 +72,7 @@ module.exports = {
                 pathRewrite: { "^/react": "" }
             },
             '/api': {
-                target: "http://localhost:7000",
+                target: "http://localhost:9999",
             },
         }
     }
