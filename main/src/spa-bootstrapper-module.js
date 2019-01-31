@@ -33,6 +33,11 @@ async function bootstrapSPA(name, hash, appURL, storeURL, globalEventDistributor
         globalEventDistributor.registerStore(storeModule.storeInstance);
     }
     // register the app with singleSPA
-    singleSpaBootstrapper.registerApplication(name, () => SystemJS.import(appURL), () => location.hash.startsWith(`#${hash}`));
+    singleSpaBootstrapper.registerApplication(name, () => SystemJS.import(appURL), hashPrefix(hash), customProps);
 }
 
+function hashPrefix(prefix) {
+    return function (location) {
+        return location.hash.startsWith(`#${prefix}`);
+    }
+}

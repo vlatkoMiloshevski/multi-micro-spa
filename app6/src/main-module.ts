@@ -41,9 +41,8 @@ export class MainModule {
 		private globals: Globals,
 		@Inject('localStoreRef') private localStoreRef: any,
 		@Inject('globalEventDispatcherRef') private globalEventDistributorRef: any
-	) { 
-		;
-		ngRedux.provideStore(localStoreRef);
-		globals.globalEventDistributor = globalEventDistributorRef;
+	) {
+		this.ngRedux.provideStore(this.localStoreRef);
+		this.globals.globalEventDistributor = this.globalEventDistributorRef;
 	}
 }
