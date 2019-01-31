@@ -47,11 +47,11 @@ export class App6 implements OnInit, OnDestroy {
         console.log(data);
     }
 
-    helloFromTheOtherSide() {
+    sayHello() {
        // change the state just in the SPA scope
-       this.ngRedux.dispatch(this.actions.helloFromTheOtherSide());
+       this.ngRedux.dispatch(this.actions.sayHello());
        // change the state on INTRA level
-       this.globals.globalEventDistributor.dispatch(this.actions.helloFromTheOtherSide());
+       this.globals.globalEventDistributor.dispatch(this.actions.sayHello());
     }
 
     ngOnDestroy() {
