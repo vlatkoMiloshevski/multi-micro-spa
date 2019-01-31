@@ -1,26 +1,22 @@
 import 'zone.js';
-import * as singleSpa from 'single-spa';
+import * as singleSpaBootstrapper from 'single-spa';
 import { SpaGlobalCommunicator } from './spa-intra-communicator'
 
-
-(async function init() {
-    const spaGlobalCommunicator = new SpaGlobalCommunicator();
+(async function () {
     const loadingPromises = [];
+    const spaGlobalCommunicator = new SpaGlobalCommunicator();
 
-    loadingPromises.push(bootstrapSpa('angularjs', '/angularjs', '/angularjs/spaModule.js', null, null));
-    loadingPromises.push(bootstrapSpa('prebuypacing', '/prebuypacing', '/prebuypacing/spaModule.js', null, null));
-    loadingPromises.push(bootstrapSpa('react', '/react', '/react/spaModule.js', null, null));
-    loadingPromises.push(bootstrapSpa('angular6', '/angular6', '/angular6/spaModule.js', '/angular6/store.js', spaGlobalCommunicator));
-    loadingPromises.push(bootstrapSpa('angular66', '/angular66', '/angular66/spaModule.js', '/angular66/store.js', spaGlobalCommunicator));
-    // wait until all stores are loaded and all apps are registered with singleSpa
+    loadingPromises.push(bootstrapSPA('angularjs', '/angularjs', '/angularjs/spaModule.js'));
+    loadingPromises.push(bootstrapSPA('ng6', '/ng6', '/ng6/spaModule.js', '/ng6/store.js', spaGlobalCommunicator));
+    loadingPromises.push(bootstrapSPA('app6', '/app6', '/app6/spaModule.js', '/app6/store.js', spaGlobalCommunicator));
+    loadingPromises.push(bootstrapSPA('react', '/react', '/react/spaModule.js'));
+    // wait until all stores are loaded and all apps are registered with singleSpaBootstrapper
     await Promise.all(loadingPromises);
-
-    singleSpa.start();
+    singleSpaBootstrapper.start();
 })();
 
-
-
-async function bootstrapSpa(name, hash, appURL, storeURL, globalEventDistributor) {
+// helpers
+async function bootstrapSPA(name, hash, appURL, storeURL, globalEventDistributor) {
     let storeModule = {}, customProps = { globalEventDistributor: globalEventDistributor };
 
     // try to import the store module
@@ -36,14 +32,7 @@ async function bootstrapSpa(name, hash, appURL, storeURL, globalEventDistributor
         // register the store with the globalEventDistributor
         globalEventDistributor.registerStore(storeModule.storeInstance);
     }
-
-    // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
-    singleSpa.registerApplication(name, () => SystemJS.import(appURL), hashPrefix(hash), customProps);
+    // register the app with singleSPA
+    singleSpaBootstrapper.registerApplication(name, () => SystemJS.import(appURL), () => location.hash.startsWith(`#${hash}`));
 }
 
-
-export function hashPrefix(prefix) {
-    return function (location) {
-        return location.hash.startsWith(`#${prefix}`);
-    }
-}

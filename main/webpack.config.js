@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: 'src/spa-bootstrapper-module.js'
+        main: 'src/spa-bootstrapper-module.js',
     },
     output: {
         publicPath: '',
@@ -59,25 +59,17 @@ module.exports = {
                 target: "http://localhost:9001",
                 pathRewrite: { "^/angularjs": "" }
             },
-            "/angular6": {
+            "/app6": {
                 target: "http://localhost:9006",
-                pathRewrite: { "^/angular6": "" }
+                pathRewrite: { "^/app6": "" }
             },
-            "/angular66": {
+            "/ng6": {
                 target: "http://localhost:9066",
-                pathRewrite: { "^/angular66": "" }
+                pathRewrite: { "^/ng6": "" }
             },
             "/react": {
                 target: "http://localhost:9009",
                 pathRewrite: { "^/react": "" }
-            },
-            "/prebuypacing": {
-                target: "http://localhost:9099",
-                pathRewrite: { "^/prebuypacing": "" }
-            },
-            "/auth": {
-                target: "http://localhost:9091",
-                pathRewrite: { "^/auth": "" }
             },
             '/api': {
                 target: "http://localhost:7000",
