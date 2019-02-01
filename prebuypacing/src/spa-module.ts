@@ -45,7 +45,6 @@ export function unmount(props) {
         }
         spaProps.bootstrappedModule.destroy();
         delete spaProps.bootstrappedModule;
-        // document.createElement('prebuypacing').innerHTML = "";
         var myNode = document.getElementById("prebuypacing");
         while (myNode.firstChild) {
             myNode.removeChild(myNode.firstChild);
