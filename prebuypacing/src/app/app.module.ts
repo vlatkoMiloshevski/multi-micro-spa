@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppComponent } from './app.component';
+import { PrebuypacingComponent } from './prebuypacing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
@@ -15,7 +15,7 @@ import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    PrebuypacingComponent
   ],
   imports: [
     // angular specific
@@ -32,7 +32,7 @@ import { APP_BASE_HREF } from '@angular/common';
     //    AuthModule
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/prebuypacing/' }],
-  bootstrap: [AppComponent]
+  bootstrap: [PrebuypacingComponent]
 })
 export class AppModule {
   constructor() {

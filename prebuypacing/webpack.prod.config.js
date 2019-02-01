@@ -46,7 +46,7 @@ module.exports = function (...webpackDevConfigParams) {
             filename: '[name].js',
             path: path.resolve(__dirname, 'release'),
             libraryTarget: 'umd',
-            library: 'angular6'
+            library: 'prebuypacing'
         },
         module: {
             rules: [
@@ -64,7 +64,7 @@ module.exports = function (...webpackDevConfigParams) {
                     options: {
                         name: "[name].[ext]",
                         limit: 10000,
-                        publicPath: '/angular6/'
+                        publicPath: '/prebuypacing/'
                     }
                 },
                 {
@@ -72,7 +72,7 @@ module.exports = function (...webpackDevConfigParams) {
                     loader: "file-loader",
                     options: {
                         name: "[name].[ext]",
-                        publicPath: '/angular6/'
+                        publicPath: '/prebuypacing/'
                     }
                 },
                 {

@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
-module.exports = function (...webpackDevConfigParams ) {
+module.exports = function (...webpackDevConfigParams) {
     const devTypescriptLoader = [
         {
             test: /\.ts$/,
@@ -14,7 +14,7 @@ module.exports = function (...webpackDevConfigParams ) {
         }
     ];
 
-    let env = webpackDevConfigParams.env;    
+    let env = webpackDevConfigParams.env;
     const analyzeBundle = !!(env && env.analyzeBundle);
     const plugins = [
         new ContextReplacementPlugin(
@@ -45,7 +45,7 @@ module.exports = function (...webpackDevConfigParams ) {
             filename: '[name].js',
             path: path.resolve(__dirname, 'release'),
             libraryTarget: 'umd',
-            library: 'angular6'
+            library: 'prebuypacing'
         },
         module: {
             rules: [
@@ -63,7 +63,7 @@ module.exports = function (...webpackDevConfigParams ) {
                     options: {
                         name: "[name].[ext]",
                         limit: 10000,
-                        publicPath: '/angular6/'
+                        publicPath: '/prebuypacing/'
                     }
                 },
                 {
@@ -71,7 +71,7 @@ module.exports = function (...webpackDevConfigParams ) {
                     loader: "file-loader",
                     options: {
                         name: "[name].[ext]",
-                        publicPath: '/angular6/'
+                        publicPath: '/prebuypacing/'
                     }
                 },
                 {
@@ -86,7 +86,10 @@ module.exports = function (...webpackDevConfigParams ) {
                         path.join(process.cwd(), "src/styles.scss")
                     ],
                     test: /\.scss$|\.sass$/,
-                    use: ["style-loader", "css-loader", "sass-loader"]
+                    use: ["style-loader", "css-loader", "sass-loader"],
+                    options: {
+                        includePaths: ['/prebuypacing/node_modules']
+                    }
                 }
             ].concat(devTypescriptLoader)
         },

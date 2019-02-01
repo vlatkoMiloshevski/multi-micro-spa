@@ -45,7 +45,11 @@ export function unmount(props) {
         }
         spaProps.bootstrappedModule.destroy();
         delete spaProps.bootstrappedModule;
-        document.getElementById('hmx-root').innerHTML='';
+        // document.createElement('prebuypacing').innerHTML = "";
+        var myNode = document.getElementById("prebuypacing");
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
         resolve();
     });
 }
@@ -53,10 +57,10 @@ export function unmount(props) {
 /* @ngInject */
 function getDomElement() {
     // Make sure there is a div for us to render into
-    let el = document.getElementById('hmx-root');
+    let el = document.getElementById('prebuypacing');
     if (!el) {
-        el = document.createElement('hmx-root');
-        el.id = 'hmx-root';
+        el = document.createElement('prebuypacing');
+        el.id = 'prebuypacing';
         document.getElementById('main-container').appendChild(el);
     }
 
