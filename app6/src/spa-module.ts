@@ -17,7 +17,6 @@ const spaProps = {
 // This lifecycle function will be called by singleSPA exactly once, right before the registered application is mounted for the first time.
 /* @ngInject */
 export function bootstrap(props) {
-    ;
     return Promise.resolve();
 }
 

@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   name: 'stub name',
-  apiUrl: 'http://api.stub',
-  loginUrl: 'login',
+  apiUrl: '/api', //'http://api.stub',
+  loginUrl: 'http://localhost:9000/#/prebuypacing/login',
   renderHeader: true
 };
 

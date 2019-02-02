@@ -33,30 +33,28 @@ export class LoginFormComponent implements OnInit {
       user: [null, Validators.required]
     });
     this.teamService.getTeams()
-    .subscribe(
-      (data: Team[]) => {
-        this.teamsList = data;
-      }
-    );
+      .subscribe(
+        (data: Team[]) => {
+          this.teamsList = data;
+        }
+      );
   }
 
   updateUserList(e): void {
     this.teamService.getTeamUsers(e.value)
-    .subscribe(
-      (data: TeamUser[]) => {
-        this.teamUsersList = data;
-      }
-    );
+      .subscribe(
+        (data: TeamUser[]) => this.teamUsersList = data
+      );
   }
 
   login(): void {
     this.authService.login(this.loginForm.value.user)
-    .subscribe(
-      (data: User) => {
-        const redirectUrl = this.authService.getRedirectUrl() || '';
-        this.router.navigate([redirectUrl]);
-      }
-    );
+      .subscribe(
+        (data: User) => {
+          const redirectUrl = this.authService.getRedirectUrl() || '';
+          this.router.navigate([redirectUrl]);
+        }
+      );
   }
 }
 

@@ -16,34 +16,26 @@ appServer.listen(port, function () {
     console.log('App listens on port ' + port + '!');
 });
 
-// app.all("/api/*", function (req, res) {
-//     console.log(req.url);
-//     var hostname = "localhost"; //(req.headers.host.match(/:/g)) ? req.headers.host.slice(0, req.headers.host.indexOf(":")) : req.headers.host;
-//     console.log(hostname);
-//     var proxyUrl = 'http://' + hostname + ':' + process.env.API_PORT + req.url;
-//     console.log(proxyUrl);
-//     // if (req.headers['cookie']) {
-//     //     var authRegexp = /Authorization=\"(.*)\"/gmi;
-//     //     if (req.headers['cookie'].match(authRegexp)) {
-//     //         var bearerTokenMatch = authRegexp.exec(req.headers['cookie']);
-//     //         req.headers['Authorization'] = bearerTokenMatch[1];
-//     //     }
-//     // }
+app.all("/api/*", function (req, res) {
+    // var hostname = "localhost"; //(req.headers.host.match(/:/g)) ? req.headers.host.slice(0, req.headers.host.indexOf(":")) : req.headers.host;
+    var proxyUrl = 'https://chicago-qa.hudsonmx.net/reportingapp/api/v1' + req.url.substring(4);
+    console.log(proxyUrl);
+    if (req.headers['cookie']) {
+        var authRegexp = /Authorization=\"(.*)\"/gmi;
+        if (req.headers['cookie'].match(authRegexp)) {
+            var bearerTokenMatch = authRegexp.exec(req.headers['cookie']);
+            req.headers['Authorization'] = bearerTokenMatch[1];
+            req.headers['Accept'] = '*/*';
+            req.headers['Accept-Encoding'] = 'gzip, deflate';
+            req.headers['Connection'] = 'keep - alive';
+        }
 
-//     req.pipe(request(proxyUrl)).pipe(res);
-// });
-
-app.get('/api/usernameList', (req, res) => {
-    console.log('node server - /api/usernameList');
-    request.get('http://jsonplaceholder.typicode.com/users', function (error, response, body) {
-        res.send(JSON.parse(response.body));
-    });
-});
-
-
-app.get('/api/emailList', (req, res) => {
-    console.log('node server - /api/emailList');
-    request.get('http://jsonplaceholder.typicode.com/users', function (error, response, body) {
-        res.send(JSON.parse(response.body));
-    });
+    }
+    req.pipe(request(proxyUrl))
+        .on('error', function (err) { console.log(err) })
+        .on('response', function (res) {
+            // res.headers['x-frame-options'] = "SAMEORIGIN";
+            res.headers['accept-encoding'] = 'deflate';
+        })
+        .pipe(res);
 });
