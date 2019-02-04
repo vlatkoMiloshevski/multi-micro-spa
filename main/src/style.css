@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: lightslategrey;
+    background-color: transparent;
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -12,6 +12,8 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding: 0 !important;
+    border: 1px solid rgba(0,0,0,.125);
 }
 
 .navbar ul {
@@ -19,10 +21,7 @@
     align-items: center;
     list-style-type: none;
     height: 100%;
-}
-
-.navbar li:hover {
-    background-color: #d1e8e2;
+    margin-left: -30px;
 }
 
 .navbar li {
@@ -34,7 +33,8 @@
 }
 
 .navbar li:hover {
-    color: black;
+    color: white;
+    opacity: 0.7
 }
 
 .navbar a {
@@ -42,3 +42,59 @@
     text-decoration: none;
     color: white;
 }
+
+body {
+    overflow-x: hidden;
+  }
+  
+
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  
+
+  .background-secondary{
+    background-color: #2b303b !important;
+  }
+
+  .display-none{
+      display: none;
+  }
