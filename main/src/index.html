@@ -23,8 +23,9 @@
 	<div class="d-flex" id="wrapper">
 		<div class="background-secondary border-right" id="sidebar-wrapper">
 			<div class="list-group list-group-flush">
-				<a href="" class="menu-toggle list-group-item list-group-item-action background-secondary text-white" style="visibility:hidden"><i
-					 class="fa fa-2x fa-navicon"></i></a>
+				<a href="" style="height: 40px;" class="menu-toggle list-group-item list-group-item-action background-secondary text-white">
+					<i class="fa fa-2x fa-navicon" style="visibility:hidden"></i>
+				</a>
 				<a href="#/angularjs" class="list-group-item list-group-item-action background-secondary text-white">Angular JS</a>
 				<a href="#/app6" class="list-group-item list-group-item-action background-secondary text-white">Angular 6 (first
 					instance)</a>
@@ -40,18 +41,24 @@
 
 
 		<!-- Page Content -->
+		<div class="loader" style="position: absolute;left: 500px;right: 500px;top: 200px;bottom: 200px;z-index: 1000">
+			<div style="width: 400px;height: 250px;margin: 0px auto">
+				<img style="height:100%; width:100%" src="https://i.gifer.com/YCZH.gif" />
+			</div>
+		</div>
 
-		<div class="menu-toggle" style="height: 50px; position: absolute">
+		<div class="menu-toggle" style="height:50px;position:absolute;z-index: 10000;">
 			<a href="">
-				<i class="fa fa-2x fa-navicon menu-body-toggle" style="margin: 12px 20px"></i>
+				<i class="fa fa-2x fa-navicon menu-body-toggle" style="margin: 5px 20px"></i>
 			</a>
 		</div>
 
 		<div id="page-content-wrapper">
 
-			<div style="height: 50px; border-bottom: 1px solid ghostwhite">
-				<div style="float: right; padding:10px">
-					Welcome back Hudson | <a href=""> <i id="logout_btn" style="color: black" class="fa fa-sign-out logout-icon"></i> </a>
+			<div style="height: 40px; border-bottom: 2px solid ghostwhite; position: relative;margin: 0 2px; background-color: white;">
+				<div style="float: right; padding:5px">
+					Welcome back Hudson | <a href=""> <i id="logout_btn" style="color: black" class="fa fa-sign-out logout-icon"></i>
+					</a>
 				</div>
 			</div>
 
@@ -92,7 +99,7 @@
 							</form>
 						</div>
 						<div class="d-flex justify-content-center mt-3 login_container">
-							<button type="button" name="button" class="btn login_btn">Login</button>
+							<button type="button" name="button" id="login_btn" class="btn login_btn">Login</button>
 						</div>
 						<!-- <div class="mt-4">
 							<div class="d-flex justify-content-center links">
@@ -114,7 +121,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 	<script>
-		(function () {
+		(function () {			
+			// $(".app-header").toggleClass("display-none");
 
 			$(".menu-toggle").click(function (e) {
 				e.preventDefault();
@@ -122,21 +130,36 @@
 				$(".menu-body-toggle").toggleClass("menu-color");
 			});
 
-			$("#login_form").click(function (e) {
-				$("#page-content-wrapper").toggleClass("display-block");
-				$("#sidebar-wrapper").toggleClass("display-block");
+			$("#login_btn").click(function (e) {
 				$("#login_form").toggleClass("display-none");
-				$(".menu-toggle").toggleClass("display-block");
+				$(".loader").toggleClass("display-block");
+				helper();
+			});
 
-				$("#sidebar-wrapper").toggleClass("display-none");
-				$("#page-content-wrapper").toggleClass("display-none");
-				$(".menu-body-toggle").toggleClass("menu-color");
+			$(".input_pass").keypress(function (e) {
+				if (e.keyCode == 13) {
+					$("#login_form").toggleClass("display-none");
+					$(".loader").toggleClass("display-block");
+					helper();
+				}
 			});
 
 			$("#logout_btn").click(function (e) {
 				window.location.reload();
 			});
 
+			function helper() {
+				setTimeout(function () {
+					$(".loader").toggleClass("display-block");
+					$("#page-content-wrapper").toggleClass("display-block");
+					$("#sidebar-wrapper").toggleClass("display-block");
+					$(".menu-toggle").toggleClass("display-block");
+
+					$("#sidebar-wrapper").toggleClass("display-none");
+					$("#page-content-wrapper").toggleClass("display-none");
+					$(".menu-body-toggle").toggleClass("menu-color");
+				}, 3000)
+			}
 		})();
 	</script>
 </body>

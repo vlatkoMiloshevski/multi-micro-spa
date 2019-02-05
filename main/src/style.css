@@ -77,7 +77,6 @@ body {
     margin-left: 0;
   }
   
-  @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
       display: none;
@@ -92,7 +91,7 @@ body {
     #wrapper.toggled #sidebar-wrapper {
       margin-left: -15rem;
     }
-  }
+
   
 
   .background-secondary{
@@ -105,6 +104,10 @@ body {
 
   .display-block{
     display: block !important;
+}
+
+.loader{
+    display: none;
 }
 
 #login_form{
@@ -122,6 +125,10 @@ body {
 
   .menu-color{
       color: white;
+  }
+
+  .list-group-item{
+      border: 1px solid rgba(198, 205, 213, 0.125) !important;
   }
 
 
