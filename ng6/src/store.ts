@@ -6,7 +6,7 @@ export interface IAppState {
 }
 
 export const INITIAL_STATE: IAppState = {
-    helloMessage: "No Regards"
+    helloMessage: ""
 };
 
 export class CounterActions {
