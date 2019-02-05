@@ -51,12 +51,11 @@ body {
 
 #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    display: none;
+    margin-left:  -15rem;
   }
   
   #sidebar-wrapper .sidebar-heading {
@@ -77,11 +76,6 @@ body {
     margin-left: 0;
   }
   
-    #sidebar-wrapper {
-      margin-left: 0;
-      display: none;
-    }
-  
     #page-content-wrapper {
       min-width: 0;
       width: 100%;
@@ -89,7 +83,7 @@ body {
     }
   
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
+      margin-left: 0!important;
     }
 
   
@@ -119,16 +113,24 @@ body {
 }
 
   .menu-body-toggle{
-    color: #60a3bc;
+    color: white;
     display: none;
   }
 
   .menu-color{
-      color: white;
+    color: #60a3bc;
   }
 
   .list-group-item{
-      border: 1px solid rgba(198, 205, 213, 0.125) !important;
+      height: 40px;
+      padding: .35rem 1.25rem!important;
+      color: lightgray !important;
+      font-size: 15px;
+  }
+
+  .list-group-item:not(:first-child):hover{
+    background-image: linear-gradient(to right, lightgray, white 100%);
+    color: black!important;
   }
 
 

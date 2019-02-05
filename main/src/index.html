@@ -21,29 +21,29 @@
 
 	<!-- Sidebar -->
 	<div class="d-flex" id="wrapper">
-		<div class="background-secondary border-right" id="sidebar-wrapper">
+		<div class="background-secondary" id="sidebar-wrapper">
 			<div class="list-group list-group-flush">
-				<a href="" style="height: 40px;" class="menu-toggle list-group-item list-group-item-action background-secondary text-white">
+				<a href="" style="height: 40px;" class="menu-toggle list-group-item background-secondary">
 					<i class="fa fa-2x fa-navicon" style="visibility:hidden"></i>
 				</a>
-				<a href="#/angularjs" class="list-group-item list-group-item-action background-secondary text-white">Angular JS</a>
-				<a href="#/app6" class="list-group-item list-group-item-action background-secondary text-white">Angular 6 (first
+				<a href="#/angularjs" class="list-group-item list-group-item-action background-secondary">Angular JS</a>
+				<a href="#/app6" class="list-group-item list-group-item-action background-secondary">Angular 6 (first
 					instance)</a>
-				<a href="#/ng6" class="list-group-item list-group-item-action background-secondary text-white">Angular 6 (second
+				<a href="#/ng6" class="list-group-item list-group-item-action background-secondary">Angular 6 (second
 					instance)</a>
-				<a href="#/react" class="list-group-item list-group-item-action background-secondary text-white">React</a>
-				<a href="#/prebuyassist" class="list-group-item list-group-item-action background-secondary text-white">Prebuy
+				<a href="#/react" class="list-group-item list-group-item-action background-secondary">React</a>
+				<a href="#/prebuyassist" class="list-group-item list-group-item-action background-secondary">Prebuy
 					Assist</a>
-				<a href="#/prebuypacing/login" class="list-group-item list-group-item-action background-secondary text-white">Prebuy
+				<a href="#/prebuypacing/login" class="list-group-item list-group-item-action background-secondary">Prebuy
 					Pacing</a>
 			</div>
 		</div>
 
 
 		<!-- Page Content -->
-		<div class="loader" style="position: absolute;left: 500px;right: 500px;top: 200px;bottom: 200px;z-index: 1000">
-			<div style="width: 400px;height: 250px;margin: 0px auto">
-				<img style="height:100%; width:100%" src="http://www.francescafurzi.com/images/loaders/loaderdxffd.gif" />
+		<div class="loader" style="position: absolute;left: 500px;right: 500px;top: 300px;bottom: 200px;z-index: 1000">
+			<div style="width: 120px;height: 100px;margin: 0px auto">
+				<img style="height:100%; width:100%" src="https://www.rogers.com/web/smb/bss/images/widget-loader-lg_no-lang.gif" />
 			</div>
 		</div>
 
@@ -63,8 +63,10 @@
 						</a>
 					</div>
 					<div style="float: left; margin-left: 100px;">
-						<img src="https://media.licdn.com/dms/image/C4E0BAQGFB8rg6CaHLQ/company-logo_200_200/0?e=2159024400&amp;v=beta&amp;t=yQBREZMf3pagkvkv4w1ZXvhQiQ6-n2tmMMs4QowSoYs"
-						 class="brand_logo" alt="Logo" style="margin: 0px auto;	margin-top: -56px; display: block;">
+						<a href="">
+							<img src="https://media.licdn.com/dms/image/C4E0BAQGFB8rg6CaHLQ/company-logo_200_200/0?e=2159024400&amp;v=beta&amp;t=yQBREZMf3pagkvkv4w1ZXvhQiQ6-n2tmMMs4QowSoYs"
+							 class="brand_logo" alt="Logo" style="margin: 0px auto;	margin-top: -56px; display: block;">
+						</a>
 					</div>
 				</div>
 			</div>
@@ -159,11 +161,7 @@
 				setTimeout(function () {
 					$(".loader").toggleClass("display-block");
 					$("#page-content-wrapper").toggleClass("display-block");
-					$("#sidebar-wrapper").toggleClass("display-block");
 					$(".menu-toggle").toggleClass("display-block");
-
-					$("#sidebar-wrapper").toggleClass("display-none");
-					$("#page-content-wrapper").toggleClass("display-none");
 					$(".menu-body-toggle").toggleClass("menu-color");
 				}, 3000)
 			}
