@@ -31,20 +31,7 @@ export class Ng6 implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.subscription = this.$http.get('api/emailList')
-            .pipe(tap())
-            .subscribe(
-                this.bindResponseDataToViewModel.bind(this),
-                this.logInfo.bind(this)
-            );
-    }
-
-    bindResponseDataToViewModel(success) {
-        this.data = success;
-    }
-
-    logInfo(data) {
-        console.log(data);
+        
     }
 
     helloFromTheOtherSide() {
@@ -55,7 +42,6 @@ export class Ng6 implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
         this.storeSubscription.unsubscribe();
     }
 
