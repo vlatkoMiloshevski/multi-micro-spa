@@ -8,7 +8,7 @@ class App extends React.Component {
       <div className="App">
         <img src={logo} className="App-logo" width="100px" alt="logo" />
         <p>
-          This is React application run on "localhost:9009"
+          This is React application running on "localhost:9009"
           </p>
       </div>
     );
