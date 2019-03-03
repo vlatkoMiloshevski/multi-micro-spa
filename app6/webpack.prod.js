@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const WebpackStripLoader = require('strip-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
@@ -17,5 +18,8 @@ module.exports = merge(common, {
                 loader: '@ngtools/webpack'
             }
         ])
-    }
+    },
+    plugins: [
+
+    ]
 });

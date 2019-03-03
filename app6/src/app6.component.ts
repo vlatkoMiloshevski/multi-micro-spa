@@ -31,6 +31,7 @@ export class App6 implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        debugger;
         console.log("app6 component onInit");
     }
 

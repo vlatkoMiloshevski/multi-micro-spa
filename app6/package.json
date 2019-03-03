@@ -24,6 +24,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
     "postcss-loader": "^3.0.0",
     "strip-loader": "^0.1.2",
