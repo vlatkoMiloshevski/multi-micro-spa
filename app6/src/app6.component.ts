@@ -12,7 +12,7 @@ import { Globals } from './spa-intra-communicator';
     styleUrls: ['./style.css']
 })
 export class App6 implements OnInit, OnDestroy {
-    angularImg: any;
+    angularImg: any; 
     data: any;
     subscription;
     storeSubscription: any;
@@ -31,7 +31,7 @@ export class App6 implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        
+        console.log("app6 component onInit");
     }
 
     sayHello() {
