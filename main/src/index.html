@@ -32,10 +32,6 @@
 				<a href="#/ng6" class="list-group-item list-group-item-action background-secondary">Angular 6 (second
 					instance)</a>
 				<a href="#/react" class="list-group-item list-group-item-action background-secondary">React</a>
-				<a href="#/prebuyassist" class="list-group-item list-group-item-action background-secondary">Prebuy
-					Assist</a>
-				<a href="#/prebuypacing/login" class="list-group-item list-group-item-action background-secondary">Prebuy
-					Pacing</a>
 			</div>
 		</div>
 
@@ -59,14 +55,14 @@
 
 				<div style="position: relative; width: 100%; float:right;  height: 38px; overflow: hidden;">
 					<div style="float: right; padding:5px 20px">
-						Welcome back Hudson | <a href=""> <i id="logout_btn" style="color: black" class="fa fa-sign-out logout-icon"></i>
+						Welcome back User | <a href=""> <i id="logout_btn" style="color: black" class="fa fa-sign-out logout-icon"></i>
 						</a>
 					</div>
 					<div style="float: left; margin-left: 65px;">
-						<a href="">
+						<!-- <a href="">
 							<img src="https://media.licdn.com/dms/image/C4E0BAQGFB8rg6CaHLQ/company-logo_200_200/0?e=2159024400&amp;v=beta&amp;t=yQBREZMf3pagkvkv4w1ZXvhQiQ6-n2tmMMs4QowSoYs"
 							 class="brand_logo" alt="Logo" style="margin: 0px auto;	margin-top: -56px; display: block;">
-						</a>
+						</a> -->
 					</div>
 				</div>
 			</div>
@@ -81,8 +77,8 @@
 					<div class="user_card">
 						<div class="d-flex justify-content-center">
 							<div class="brand_logo_container">
-								<img src="https://media.licdn.com/dms/image/C4E0BAQGFB8rg6CaHLQ/company-logo_200_200/0?e=2159024400&v=beta&t=yQBREZMf3pagkvkv4w1ZXvhQiQ6-n2tmMMs4QowSoYs"
-								 class="brand_logo" alt="Logo">
+								<!-- <img src="https://media.licdn.com/dms/image/C4E0BAQGFB8rg6CaHLQ/company-logo_200_200/0?e=2159024400&v=beta&t=yQBREZMf3pagkvkv4w1ZXvhQiQ6-n2tmMMs4QowSoYs"
+								 class="brand_logo" alt="Logo"> -->
 							</div>
 						</div>
 						<div class="d-flex justify-content-center form_container">
@@ -131,6 +127,9 @@
 
 	<script>
 		(function () {
+			$("#login_form").toggleClass("display-none");
+			$(".loader").toggleClass("display-block");
+			helper();
 			// $(".app-header").toggleClass("display-none");
 
 			$(".menu-toggle").click(function (e) {
