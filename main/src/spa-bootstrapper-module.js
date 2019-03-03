@@ -11,8 +11,6 @@ import { SpaGlobalCommunicator } from './spa-intra-communicator'
     loadingPromises.push(bootstrapSPA('ng6', '/ng6', '/ng6/spaModule.js', '/ng6/store.js', spaGlobalCommunicator));
     loadingPromises.push(bootstrapSPA('app6', '/app6', '/app6/spaModule.js', '/app6/store.js', spaGlobalCommunicator));
     loadingPromises.push(bootstrapSPA('react', '/react', '/react/spaModule.js'));
-    loadingPromises.push(bootstrapSPA('prebuypacing', '/prebuypacing', '/prebuypacing/spaModule.js'));
-    loadingPromises.push(bootstrapSPA('prebuyassist', '/prebuyassist', '/prebuyassist/spaModule.js', '/prebuyassist/store.js', spaGlobalCommunicator));
     // wait until all stores are loaded and all apps are registered with singleSpaBootstrapper
     await Promise.all(loadingPromises);
     singleSpaBootstrapper.start();
