@@ -5,12 +5,13 @@ import { tap } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, CounterActions } from './store';
 import { Globals } from './spa-intra-communicator';
-import './assets/scss/styles.scss'
+import './assets/scss/app.scss'
+import './assets/less/app.less'
+import './assets/css/app.css'
 
 @Component({
     selector: 'app6',
-    templateUrl: './app6.component.html',
-    styleUrls: ['./assets/css/style.css']
+    templateUrl: './app6.component.html'
 })
 export class App6 implements OnInit, OnDestroy {
     angularImg: any; 

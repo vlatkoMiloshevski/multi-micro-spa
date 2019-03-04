@@ -41,18 +41,21 @@ module.exports = {
                     publicPath: '/app6/'
                 }
             },
-            {
-                test: /\.scss$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
-            },
-            {
-                test: /\.less$/,
-                use: ["style-loader", "css-loader", "less-loader"]
-            },
-            {
-                test: /\.css$/,
-                use: ["to-string-loader", 'css-loader']
-            },
+            // {
+            //     test: /\.css$/,
+            //     exclude: /node_modules/,
+            //     use: ["to-string-loader", 'css-loader']
+            // },
+            // {
+            //     test: /\.less$/,
+            //     exclude: /node_modules/,
+            //     use: ["style-loader", "css-loader", "less-loader"]
+            // },
+            // {
+            //     test: /\.scss$/,
+            //     exclude: /node_modules/,
+            //     use: ["style-loader", "css-loader", "sass-loader"]
+            // }
         ]
     },
     resolve: {
@@ -72,7 +75,7 @@ module.exports = {
             mainPath: path.resolve(__dirname, 'src/spa-module.ts'),
             tsConfigPath: path.resolve(__dirname, 'tsconfig.json'),
             sourceMap: true,
-            skipCodeGeneration: false,
+            skipCodeGeneration: true,
             platform: 0,
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"

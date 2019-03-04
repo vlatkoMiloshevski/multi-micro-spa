@@ -25,7 +25,7 @@ module.exports = function (...webpackDevConfigParams ) {
             mainPath: path.resolve(__dirname, 'src/spa-module.ts'),
             tsConfigPath: path.resolve(__dirname, 'tsconfig.json'),
             sourceMap: true,
-            skipCodeGeneration: false,
+            skipCodeGeneration: true,
             platform: 0,
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"

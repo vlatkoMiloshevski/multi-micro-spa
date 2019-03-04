@@ -8,7 +8,23 @@ module.exports = merge(common, {
         contentBase: './dist'
     },
     module: {
-        rules: [].concat([
+        rules: [
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ["style-loader", 'css-loader']
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            }
+        ].concat([
             {
                 test: /\.ts$/,
                 exclude: /node_modules/,
