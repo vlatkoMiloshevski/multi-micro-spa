@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+
+    src: url('../fonts/lsans.ttf');
+    src: url('../fonts/lsansd.ttf');
+    src: url('../fonts/lsansdi.ttf');
+    src: url('../fonts/lsansi.ttf');
+}
+
+
 .main-container{
     padding: 10px;
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
 }

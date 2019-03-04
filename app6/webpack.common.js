@@ -40,22 +40,7 @@ module.exports = {
                     name: "[name].[ext]",
                     publicPath: '/app6/'
                 }
-            },
-            // {
-            //     test: /\.css$/,
-            //     exclude: /node_modules/,
-            //     use: ["to-string-loader", 'css-loader']
-            // },
-            // {
-            //     test: /\.less$/,
-            //     exclude: /node_modules/,
-            //     use: ["style-loader", "css-loader", "less-loader"]
-            // },
-            // {
-            //     test: /\.scss$/,
-            //     exclude: /node_modules/,
-            //     use: ["style-loader", "css-loader", "sass-loader"]
-            // }
+            }
         ]
     },
     resolve: {
