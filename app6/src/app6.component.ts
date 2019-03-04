@@ -1,15 +1,16 @@
 import { Component, forwardRef, Inject, OnDestroy, OnInit } from '@angular/core';
-import * as angularImg from "../assets/angular-logo.png";
+import * as angularImg from "./assets/angular-logo.png";
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, CounterActions } from './store';
 import { Globals } from './spa-intra-communicator';
+import './assets/scss/styles.scss'
 
 @Component({
     selector: 'app6',
     templateUrl: './app6.component.html',
-    styleUrls: ['./style.css']
+    styleUrls: ['./assets/css/style.css']
 })
 export class App6 implements OnInit, OnDestroy {
     angularImg: any; 
@@ -31,7 +32,6 @@ export class App6 implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        debugger;
         console.log("app6 component onInit");
     }
 

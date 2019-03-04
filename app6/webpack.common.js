@@ -25,10 +25,6 @@ module.exports = {
                 loader: "raw-loader"
             },
             {
-                test: /\.css$/,
-                use: ["to-string-loader", 'css-loader']
-            },
-            {
                 test: /\.(jpe?g|png|webp|gif|otf|ttf|woff2?|ani)$/,
                 loader: "url-loader",
                 options: {
@@ -46,19 +42,17 @@ module.exports = {
                 }
             },
             {
-                exclude: [
-                    path.join(process.cwd(), "src/styles.scss")
-                ],
-                test: /\.scss$|\.sass$/,
-                use: ["exports-loader?module.exports.toString()", "css-loader", "sass-loader"]
+                test: /\.scss$/,
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
-                include: [
-                    path.join(process.cwd(), "src/styles.scss")
-                ],
-                test: /\.scss$|\.sass$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
-            }
+                test: /\.less$/,
+                use: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: /\.css$/,
+                use: ["to-string-loader", 'css-loader']
+            },
         ]
     },
     resolve: {
