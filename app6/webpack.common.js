@@ -1,10 +1,9 @@
 const path = require('path');
-const WebpackStripLoader = require('strip-loader');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackDevMiddleware = require('webpack-dev-middleware');
 
 
 module.exports = {
@@ -66,5 +65,19 @@ module.exports = {
                 "environments/environment.ts": "environments/environment.ts"
             }
         })
-    ]
+    ],
+    devServer: {
+        // execute custom middleware before all the other middlewares
+        before: function (app, server) {
+            console.log("before");
+        },
+        // execute custom middleware after all other middlewares
+        after: function (app, server) {
+            console.log("after");
+        },
+        // Response headers for dev mode
+        headers: {
+            'X-Custom-Webpack-Header': 'yes'
+        }
+    }
 }

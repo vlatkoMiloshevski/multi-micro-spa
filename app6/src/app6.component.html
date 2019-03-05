@@ -1,21 +1,23 @@
-<img [src]="angularImg" style="width: 100px;" />
+<div class="main-container">
+    <img [src]="angularImg" style="width: 100px;" />
 
-<div class="angular-backbground border-gray main-container"> 
-    <br /> 
-    This is Angular 6 application running on "localhost:9006" : <b>FIRST INSTANCE</b>
+    <div class="angular-backbground border-gray">
+        <br />
+        This is Angular 6 application running on "localhost:9006" : <b>FIRST INSTANCE</b>
+    </div>
+
+    <br />
+
+    <button (click)="sayHello()">Say Hello</button>
+    <label>{{helloMessage}}</label>
+
+    <br />
+
+    <a [routerLink]="['/nested']" routerLinkActive="active">Nested route</a>&nbsp;
+    <a href="#/ng6/nested">Angular 6 Nested route [SECOND INSTANCE]</a>&nbsp;
+    <a href="#/angularjs/nested"> AngularJS Nested route</a>
+
+    <br />
+
+    <router-outlet></router-outlet>
 </div>
-
-<br />
-
-<button (click)="sayHello()">Say Hello</button>
-<label>{{helloMessage}}</label>
-
-<br />
-
-<a [routerLink]="['/nested']" routerLinkActive="active">Nested route</a>&nbsp;
-<a href="#/ng6/nested">Angular 6 Nested route [SECOND INSTANCE]</a>&nbsp;
-<a href="#/angularjs/nested"> AngularJS Nested route</a>
-
-<br />
-
-<router-outlet></router-outlet>

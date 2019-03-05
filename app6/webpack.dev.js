@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const StripLoader = require('strip-loader');
 
 module.exports = merge(common, {
     mode: 'development',
@@ -24,7 +25,7 @@ module.exports = merge(common, {
                 exclude: /node_modules/,
                 use: ["style-loader", "css-loader", "sass-loader"]
             }
-        ].concat([
+        ].concat([     
             {
                 test: /\.ts$/,
                 exclude: /node_modules/,

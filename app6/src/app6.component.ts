@@ -9,6 +9,7 @@ import './assets/scss/app.scss'
 import './assets/less/app.less'
 import './assets/css/app.css'
 
+//app component
 @Component({
     selector: 'app6',
     templateUrl: './app6.component.html'
@@ -34,6 +35,7 @@ export class App6 implements OnInit, OnDestroy {
 
     ngOnInit() {
         console.log("app6 component onInit");
+        console.warn("test");
     }
 
     sayHello() {

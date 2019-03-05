@@ -1,8 +1,9 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const WebpackStripLoader = require('strip-loader');
+const StripLoader = require('strip-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
@@ -25,11 +26,6 @@ module.exports = merge(common, {
             }
         ].concat([
             {
-                test: [/\.ts$/, /\.js$/],
-                exclude: /node_modules/,
-                loader: WebpackStripLoader.loader('console.log')
-            },
-            {
                 test: /\.ts$/,
                 exclude: /node_modules/,
                 loader: '@ngtools/webpack'
@@ -42,6 +38,21 @@ module.exports = merge(common, {
             // both options are optional
             filename: "[name].css",
             chunkFilename: "[id].css"
+        }),
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                // Eliminate comments
+                output: {
+                    comments: false,
+                },
+                // Compression specific options
+                compress: {
+                    // remove warnings
+                    warnings: false,
+                    // Drop console statements
+                    drop_console: true
+                }
+            }
         })
     ]
 });
