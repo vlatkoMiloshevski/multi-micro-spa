@@ -7,7 +7,7 @@ The solution provides main app which consists of multiple single page applicatio
 - SystemJS used as a strategy to standardize every differently stylised JS modules
 
 # Benefits
-- Multi framework based solution
+- Multi meta framework based solution
 - Code writing without rewriting
 - Lazy loading & navigating without hard refreshing 
 
@@ -21,4 +21,4 @@ The solution provides main app which consists of multiple single page applicatio
    - `npm start`
 4. Start tne node instance with:
    - `npm start`
-5. Open up http://localhost:9000 in a web browser.
+5. Open up http://localhost:9008 in a web browser.
