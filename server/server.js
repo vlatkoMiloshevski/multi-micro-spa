@@ -1,7 +1,19 @@
 var http = require('http');
 var request = require('request');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const pgp = require('./src/pgp')();
+const db = require('./src/db')(pgp);
+require('./src/seed')(db, pgp);
+
+db.none('INSERT INTO singlespa_user(name) VALUES($1)', ['John'])
+    .then(() => {
+        console.log('successfully added new singlespa_user record');
+    })
+    .catch(error => {
+        console.log('error while adding new singlespa_user record');
+    });
+
 
 var app = express();
 // parse application/x-www-form-urlencoded
@@ -17,8 +29,7 @@ appServer.listen(port, function () {
 });
 
 app.all("/api/*", function (req, res) {
-    // var hostname = "localhost"; //(req.headers.host.match(/:/g)) ? req.headers.host.slice(0, req.headers.host.indexOf(":")) : req.headers.host;
-    var proxyUrl = 'https://chicago-qa.hudsonmx.net/reportingapp/api/v1' + req.url.substring(4);
+
     console.log(proxyUrl);
     if (req.headers['cookie']) {
         var authRegexp = /Authorization=\"(.*)\"/gmi;
