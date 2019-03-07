@@ -4,17 +4,57 @@ var bcrypt = require('bcryptjs');
 var config = require('../secret');
 
 module.exports = function (app, db) {
-    app.post('/api/register', function (req, res) {
-        var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-        var user = {
+    app.post('/api/register', async function (req, res) {
+        var hashedpassword = bcrypt.hashSync(req.body.password, 8);
+        var reqUser = {
             username: req.body.username,
             email: req.body.email,
-            hashedPassword: hashedPassword
+            hashedpassword: hashedpassword
         };
 
-        db.one('INSERT INTO singlespa_user(username, email, hashedPassword) VALUES($1, $2, $3) RETURNING id, username', [user.username, user.email, user.hashedPassword])
+        db.any('SELECT * FROM singlespa_user WHERE username=$1', [req.body.username])
             .then(function (user) {
-                console.log('successfully added new singlespa_user record');
+                if (user.length && bcrypt.compareSync(req.body.password, user[0].hashedpassword)) {
+                    // create a token
+                    var token = jwt.sign({ id: user.id }, config.secret, {
+                        expiresIn: 60 // expires in 1 hours
+                    });
+
+                    res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
+                    res.status(200).send({ "user": user });
+                    return;
+                }
+
+                db.one('INSERT INTO singlespa_user(username, email, hashedpassword) VALUES($1, $2, $3) RETURNING id, username', [reqUser.username, reqUser.email, reqUser.hashedpassword])
+                    .then(function (user) {
+                        console.log('successfully added new singlespa_user record');
+                        console.log('user: ', user);
+                        // create a token
+                        var token = jwt.sign({ id: user.id }, config.secret, {
+                            expiresIn: 60 // expires in 1 hours
+                        });
+
+                        res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
+                        res.status(200).send({ "user": user });
+                    }, function (error) {
+                        return res.status(500).send("There was a problem registering the user: ", error)
+                    });
+            })
+    });
+
+    app.post('/api/login', function (req, res) {
+        db.one('SELECT * FROM singlespa_user WHERE username=$1', [req.body.username])
+            .then(function (user) {
+                if (!user.hashedpassword) {
+                    res.status(401).send({ message: "user does not exist" });
+                    return;
+                }
+
+                if (!bcrypt.compareSync(req.body.password, user.hashedpassword)) {
+                    res.status(401).send({ message: "credentials don't match" });
+                    return;
+                }
+
                 console.log('user: ', user);
                 // create a token
                 var token = jwt.sign({ id: user.id }, config.secret, {
