@@ -15,7 +15,7 @@ import './assets/css/app.css'
     templateUrl: './app6.component.html'
 })
 export class App6 implements OnInit, OnDestroy {
-    angularImg: any; 
+    angularImg: any;
     data: any;
     subscription;
     storeSubscription: any;
@@ -36,13 +36,26 @@ export class App6 implements OnInit, OnDestroy {
     ngOnInit() {
         console.log("app6 component onInit");
         console.warn("test");
+        this.$http.post('/api/register', { name: 'test', email: 'test@gmail.com ', password: 'testPassword' })
+            .subscribe(
+                this.handleRegisteredUser.bind(this),
+                error => console.log(error)
+            );
+    }
+
+    handleRegisteredUser() {
+        this.$http.get('/api/me')
+            .subscribe(
+                success => console.log(success),
+                error => console.log(error)
+            )
     }
 
     sayHello() {
-       // change the state just in the SPA scope
-       this.ngRedux.dispatch(this.actions.sayHello());
-       // change the state on INTRA level
-       this.globals.globalEventDistributor.dispatch(this.actions.sayHello());
+        // change the state just in the SPA scope
+        this.ngRedux.dispatch(this.actions.sayHello());
+        // change the state on INTRA level
+        this.globals.globalEventDistributor.dispatch(this.actions.sayHello());
     }
 
     ngOnDestroy() {
