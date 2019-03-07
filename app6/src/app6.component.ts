@@ -35,7 +35,9 @@ export class App6 implements OnInit, OnDestroy {
 
     ngOnInit() {
         console.log("app6 component onInit");
-        console.warn("test");
+    }
+
+    testButton() {
         this.$http.post('/api/register', { name: 'test', email: 'test@gmail.com ', password: 'testPassword' })
             .subscribe(
                 this.handleRegisteredUser.bind(this),

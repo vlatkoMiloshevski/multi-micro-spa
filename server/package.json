@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "debug": "node --nolazy --inspect-brk=9999 server.js"
+  },
   "author": "Vlatko Miloshevski",
   "license": "ISC",
   "dependencies": {
