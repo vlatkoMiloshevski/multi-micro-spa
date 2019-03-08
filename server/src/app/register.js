@@ -16,12 +16,12 @@ module.exports = function (app, db) {
             .then(function (user) {
                 if (user.length && bcrypt.compareSync(req.body.password, user[0].hashedpassword)) {
                     // create a token
-                    var token = jwt.sign({ id: user.id }, config.secret, {
+                    var token = jwt.sign({ id: user[0].id }, config.secret, {
                         expiresIn: 60 // expires in 1 hours
                     });
 
                     res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
-                    res.status(200).send({ "user": user });
+                    res.status(200).send({ "user": user[0] });
                     return;
                 }
 
@@ -43,26 +43,26 @@ module.exports = function (app, db) {
     });
 
     app.post('/api/login', function (req, res) {
-        db.one('SELECT * FROM singlespa_user WHERE username=$1', [req.body.username])
+        db.any('SELECT * FROM singlespa_user WHERE username=$1', [req.body.username])
             .then(function (user) {
-                if (!user.hashedpassword) {
+                if (!user.length) {
                     res.status(401).send({ message: "user does not exist" });
                     return;
                 }
 
-                if (!bcrypt.compareSync(req.body.password, user.hashedpassword)) {
+                if (!bcrypt.compareSync(req.body.password, user[0].hashedpassword)) {
                     res.status(401).send({ message: "credentials don't match" });
                     return;
                 }
 
-                console.log('user: ', user);
+                console.log('user: ', user[0]);
                 // create a token
-                var token = jwt.sign({ id: user.id }, config.secret, {
+                var token = jwt.sign({ id: user[0].id }, config.secret, {
                     expiresIn: 60 // expires in 24 hours
                 });
 
                 res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
-                res.status(200).send({ "user": user });
+                res.status(200).send({ "user": user[0] });
             }, function (error) {
                 return res.status(401).send("No such user: ", error)
             });
