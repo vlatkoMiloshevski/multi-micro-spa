@@ -57,6 +57,7 @@
     "@angular/platform-browser": "^6.1.2",
     "@angular/platform-browser-dynamic": "^6.1.2",
     "@angular/router": "^6.1.2",
+    "angular-webstorage-service": "^1.0.2",
     "core-js": "^2.5.7",
     "es6-promise": "^4.2.4",
     "raw-loader": "^1.0.0",

@@ -48,12 +48,12 @@ module.exports = function (app, db) {
         db.any('SELECT * FROM singlespa_user WHERE username=$1', [req.body.username])
             .then(function (user) {
                 if (!user.length) {
-                    res.status(401).send({ message: "user does not exist" });
+                    res.status(400).send({ message: "user does not exist" });
                     return;
                 }
 
                 if (!bcrypt.compareSync(req.body.password, user[0].hashedpassword)) {
-                    res.status(401).send({ message: "credentials don't match" });
+                    res.status(400).send({ message: "credentials don't match" });
                     return;
                 }
 
@@ -67,7 +67,7 @@ module.exports = function (app, db) {
                 delete user[0].hashedpassword;
                 res.status(200).send({ "user": user[0] });
             }, function (error) {
-                return res.status(401).send("No such user: ", error)
+                return res.status(400).send("No such user: ", error)
             });
     });
 
@@ -87,7 +87,9 @@ module.exports = function (app, db) {
             token = spa_auth_cookie.split('=')[1];
         }
 
-        if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
+        if (!token) {
+            return res.status(401).send({ auth: false, message: 'No token provided.' });
+        }
 
         jwt.verify(token, config.secret, function (err, decoded) {
             if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });

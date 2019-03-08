@@ -4,10 +4,12 @@ import { App6 } from './app6.component';
 import { enableProdMode } from '@angular/core';
 import { APP_BASE_HREF } from "@angular/common";
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
-import { HttpClientModule } from '@angular/common/http'
 import { Globals } from './spa-intra-communicator';
 import { IAppState, CounterActions } from './store';
 import { MainRoutingModule } from './main.routing.module';
+import { InterceptService } from './intercept.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 enableProdMode();
 
@@ -16,9 +18,20 @@ enableProdMode();
 		HttpClientModule,
 		BrowserModule,
 		NgReduxModule,
-		MainRoutingModule
+		MainRoutingModule,
+		StorageServiceModule
 	],
-	providers: [{ provide: APP_BASE_HREF, useValue: '/app6/' }, CounterActions, Globals],
+	providers: [
+		{ provide: APP_BASE_HREF, useValue: '/app6/' },
+		CounterActions,
+		Globals,
+		InterceptService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: InterceptService,
+			multi: true
+		}
+	],
 	declarations: [
 		App6
 	],

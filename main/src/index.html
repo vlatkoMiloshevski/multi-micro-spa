@@ -148,9 +148,14 @@
 			});
 
 			$("#login_btn").click(function (e) {
-				var username = document.getElementById('username').value || "username";
-				var password = document.getElementById('password').value || "password";
-				var email = document.getElementById('email').value || "email";
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				var email = document.getElementById('email').value;
+
+				if (!username || !password || !email) {
+					console.error("invalid login data");
+					return;
+				}
 
 				$.ajax({
 					method: "POST",
@@ -170,9 +175,14 @@
 			});
 
 			$("#register_btn").click(function (e) {
-				var username = document.getElementById('username').value || "username";
-				var password = document.getElementById('password').value || "password";
-				var email = document.getElementById('email').value || "email";
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				var email = document.getElementById('email').value;
+
+				if (!username || !password || !email) {
+					console.error("invalid register data");
+					return;
+				}
 
 				$.ajax({
 					method: "POST",
