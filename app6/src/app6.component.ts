@@ -38,20 +38,13 @@ export class App6 implements OnInit, OnDestroy {
     }
 
     testButton() {
-        this.$http.post('/api/register', { name: 'test', email: 'test@gmail.com ', password: 'testPassword' })
-            .subscribe(
-                this.handleRegisteredUser.bind(this),
-                error => console.log(error)
-            );
-    }
-
-    handleRegisteredUser() {
         this.$http.get('/api/me')
             .subscribe(
                 success => console.log(success),
                 error => console.log(error)
-            )
+            );
     }
+
 
     sayHello() {
         // change the state just in the SPA scope

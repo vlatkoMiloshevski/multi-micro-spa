@@ -21,6 +21,7 @@ module.exports = function (app, db) {
                     });
 
                     res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
+                    delete user.hashedpassword;
                     res.status(200).send({ "user": user[0] });
                     return;
                 }
@@ -35,6 +36,7 @@ module.exports = function (app, db) {
                         });
 
                         res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
+                        delete user.hashedpassword;
                         res.status(200).send({ "user": user });
                     }, function (error) {
                         return res.status(500).send("There was a problem registering the user: ", error)
@@ -62,6 +64,7 @@ module.exports = function (app, db) {
                 });
 
                 res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
+                delete user[0].hashedpassword;
                 res.status(200).send({ "user": user[0] });
             }, function (error) {
                 return res.status(401).send("No such user: ", error)
