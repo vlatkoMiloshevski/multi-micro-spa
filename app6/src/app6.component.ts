@@ -41,7 +41,7 @@ export class App6 implements OnInit, OnDestroy {
         this.$http.get('/api/me')
             .subscribe(
                 success => console.log(success),
-                error => console.log(error)
+                error => console.log(error.message)
             );
     }
 

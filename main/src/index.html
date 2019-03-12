@@ -150,16 +150,15 @@
 			$("#login_btn").click(function (e) {
 				var username = document.getElementById('username').value;
 				var password = document.getElementById('password').value;
-				var email = document.getElementById('email').value;
 
-				if (!username || !password || !email) {
+				if (!username || !password) {
 					console.error("invalid login data");
 					return;
 				}
 
 				$.ajax({
 					method: "POST",
-					data: { username: username, password: password, email: email },
+					data: { username: username, password: password },
 					url: "/api/login",
 					success: function (success) {
 						localStorage.setItem("user", JSON.stringify(success.user));

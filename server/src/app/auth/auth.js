@@ -1,7 +1,7 @@
 
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
-var config = require('../secret');
+var config = require('../../secret');
 
 module.exports = function (app, db) {
     app.post('/api/register', async function (req, res) {

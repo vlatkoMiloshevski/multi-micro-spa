@@ -16,13 +16,15 @@ appServer.listen(port, function () {
     console.log('App listens on port ' + port + '!');
 });
 
-const pgp = require('./src/pgp')();
-const db = require('./src/db')(pgp);
-require('./src/seed')(db, pgp);
+const pgp = require('./src/db/pgp')();
+const db = require('./src/db/connection')(pgp);
+require('./src/db/seed')(db, pgp);
 
-require('./src/app/register')(app, db);
+require('./src/app/auth/auth')(app, db);
+require('./src/app/auth/middleware')(app);
 // From now on app will use jwt verification for all further api requests
 
+// test api
 app.get('/api/me', function (req, res) {
     res.status(200).send();
 });
