@@ -1,7 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -9,16 +7,38 @@ module.exports = {
         main: 'src/spa-bootstrapper-module.js',
     },
     output: {
-        publicPath: '',
         filename: '[name].js',
         path: path.resolve(__dirname, 'release'),
+        libraryTarget: 'umd',
+        library: 'main'
     },
     module: {
         rules: [
             {
+                test: /\.html$/,
+                loader: "raw-loader"
+            },
+            {
                 test: /\.js?$/,
                 exclude: [path.resolve(__dirname, 'node_modules')],
                 loader: 'babel-loader',
+            },
+            {
+                test: /\.(jpe?g|png|webp|gif|otf|ttf|woff2?|ani)$/,
+                loader: "url-loader",
+                options: {
+                    name: "[name].[ext]",
+                    limit: 10000,
+                    publicPath: '/main/'
+                }
+            },
+            {
+                test: /\.(eot|svg|cur)$/,
+                loader: "file-loader",
+                options: {
+                    name: "[name].[ext]",
+                    publicPath: '/main/'
+                }
             }
         ],
     },
@@ -34,6 +54,7 @@ module.exports = {
     plugins: [
         CopyWebpackPlugin([
             { from: path.resolve(__dirname, 'src/index.html') },
+            { from: path.resolve(__dirname, 'src/assets/images') },
             { from: path.resolve(__dirname, 'src/style.css') },
             { from: path.resolve(__dirname, 'libs/system.js') },
         ]),
