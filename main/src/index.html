@@ -219,7 +219,10 @@
 						window.location.reload();
 					},
 					error: function (error) {
-						console.log("Error while trying to login");
+						console.log("Error while trying to logout");
+						localStorage.clear("user");
+						$('#loggedUser').text('');
+						window.location.reload();
 					}
 				});
 			});
