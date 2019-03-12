@@ -1,10 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: 'src/spa-bootstrapper-module.js',
+        main: 'src/app/spa-bootstrapper-module.js'
     },
     output: {
         filename: '[name].js',
@@ -55,10 +56,10 @@ module.exports = {
         CopyWebpackPlugin([
             { from: path.resolve(__dirname, 'src/index.html') },
             { from: path.resolve(__dirname, 'src/assets/images') },
+            { from: path.resolve(__dirname, 'src/app') },
             { from: path.resolve(__dirname, 'src/style.css') },
             { from: path.resolve(__dirname, 'libs/system.js') },
-        ]),
-        new CleanWebpackPlugin(['release'])
+        ])
     ],
     devtool: 'source-map',
     externals: [

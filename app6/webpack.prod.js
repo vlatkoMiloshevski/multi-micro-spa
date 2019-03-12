@@ -1,7 +1,5 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const StripLoader = require('strip-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
