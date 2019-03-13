@@ -8,9 +8,8 @@ import { SpaGlobalCommunicator } from './spa-intra-communicator'
 
     // name, redirect/routing hash, application URL, store provider, URL, global event distributer
     loadingPromises.push(bootstrapSPA('angularjs', '/angularjs', '/angularjs/spaModule.js'));
-    loadingPromises.push(bootstrapSPA('ng6', '/ng6', '/ng6/spaModule.js', '/ng6/store.js', spaGlobalCommunicator));
     loadingPromises.push(bootstrapSPA('app6', '/app6', '/app6/spaModule.js', '/app6/store.js', spaGlobalCommunicator));
-    loadingPromises.push(bootstrapSPA('react', '/react', '/react/spaModule.js'));
+    loadingPromises.push(bootstrapSPA('react', '/react', '/react/spaModule.js', '/react/store.js', spaGlobalCommunicator));
     // wait until all stores are loaded and all apps are registered with singleSpaBootstrapper
     await Promise.all(loadingPromises);
     singleSpaBootstrapper.start();

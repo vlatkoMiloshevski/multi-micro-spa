@@ -1,18 +1,40 @@
 import React from 'react';
-import logo from '../assets/logo.svg'
+import { Provider } from 'react-redux';
+import reactLogo from '../assets/images/react-logo.png'
+import Regards from './regards'
+import '../assets/style/app.scss'
+import '../assets/style/app.less'
 
-class App extends React.Component {
+export default class App extends React.Component {
+
+  state = {
+    store: this.props.store,
+    globalEventDistributor: this.props.globalEventDistributor,
+  };
+
+  componentDidCatch(error, info) {
+    console.log(error, info);
+  }
 
   render() {
-    return (
-      <div className="App">
-        <img src={logo} className="App-logo" width="100px" alt="logo" />
-        <p>
-          This is React application running on "localhost:9009"
-          </p>
-      </div>
-    );
+    let mainView = <div className="App">
+    </div>;
+
+    if (this.state && this.state.store && this.state.globalEventDistributor) {
+      mainView =
+        <Provider store={this.state.store}>
+          <div>
+            <img src={reactLogo} className="App-logo" style={{ width: 100 }} />
+            <div className="angular-backbground border-gray">
+              <br />
+              <label>This is React application running on "localhost:9009"</label>
+            </div>
+            <Regards globalEventDistributor={this.state.globalEventDistributor} />
+          </div>
+        </Provider>
+    }
+
+    return mainView;
   }
 }
 
-export default App;

@@ -85,10 +85,6 @@ module.exports = {
                 target: "http://localhost:9006",
                 pathRewrite: { "^/app6": "" }
             },
-            "/ng6": {
-                target: "http://localhost:9066",
-                pathRewrite: { "^/ng6": "" }
-            },
             "/react": {
                 target: "http://localhost:9009",
                 pathRewrite: { "^/react": "" }

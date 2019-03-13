@@ -6,7 +6,7 @@ import singleSpaReact from 'single-spa-react';
 const reactLifecycles = singleSpaReact({
     React,
     ReactDOM,
-    appComponent: App,
+    rootComponent: App,
     getDomElement
 });
 

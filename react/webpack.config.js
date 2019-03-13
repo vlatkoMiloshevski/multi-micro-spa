@@ -2,14 +2,15 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        spaModule: './src/spa-module.js'
+        spaModule: './src/spa-module.js',
+        store: './src/store.js'
     },
 
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'release'),
         libraryTarget: 'amd',
-        library: 'reactApp'
+        library: 'react'
     },
 
     module: {
@@ -18,6 +19,21 @@ module.exports = {
                 test: /\.js/,
                 use: ['babel-loader?cacheDirectory'],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ["style-loader", 'css-loader']
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -30,7 +46,7 @@ module.exports = {
                     }
                 ]
             },
-            
+
         ],
     },
 
