@@ -1,13 +1,14 @@
 import angular from 'angular';
+import angularLogo from '../assets/images/angularjs-logo.jpg'
 
 angular
     .module('app')
     .component('root', {
         template: require('./app.template.html'),
         controllerAs: 'vm',
-        controller: ['$http', function ($http) {
+        controller: [function () {
             var vm = this;
-            vm.angularImg = '/angularjs/assets/angularjs-logo.jpg';
-
+            vm.angularImg = angularLogo;
+            console.log('angularjs app component started')
         }]
     });

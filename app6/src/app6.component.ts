@@ -1,7 +1,6 @@
 import { Component, forwardRef, Inject, OnDestroy, OnInit } from '@angular/core';
 import * as angularImg from "./assets/angular-logo.png";
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, CounterActions } from './store';
 import { Globals } from './spa-intra-communicator';
