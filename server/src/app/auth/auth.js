@@ -16,9 +16,8 @@ module.exports = function (app, db) {
             .then(function (user) {
                 if (user.length && bcrypt.compareSync(req.body.password, user[0].hashedpassword)) {
                     // create a token
-                    var token = jwt.sign({ id: user[0].id }, config.secret, {
-                        expiresIn: 60 // expires in 1 hours
-                    });
+                    let userAuthObject = { id: user[0].id };
+                    var token = getSignedJwtToken(userAuthObject);
 
                     res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
                     delete user.hashedpassword;
@@ -31,9 +30,8 @@ module.exports = function (app, db) {
                         console.log('successfully added new singlespa_user record');
                         console.log('user: ', user);
                         // create a token
-                        var token = jwt.sign({ id: user.id }, config.secret, {
-                            expiresIn: 60 // expires in 1 hours
-                        });
+                        let userAuthObject = { id: user.id };
+                        var token = getSignedJwtToken(userAuthObject);
 
                         res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
                         delete user.hashedpassword;
@@ -59,9 +57,8 @@ module.exports = function (app, db) {
 
                 console.log('user: ', user[0]);
                 // create a token
-                var token = jwt.sign({ id: user[0].id }, config.secret, {
-                    expiresIn: 60 // expires in 24 hours
-                });
+                let userAuthObject = { id: user[0].id };
+                var token = getSignedJwtToken(userAuthObject);
 
                 res.cookie('spa_auth_cookie', token, { maxAge: 900000, httpOnly: true });
                 delete user[0].hashedpassword;
@@ -97,4 +94,12 @@ module.exports = function (app, db) {
         });
     })
 
+}
+
+function getSignedJwtToken(userAuthObject) {
+    jwt.sign(userAuthObject, config.secret, {
+        expiresIn: 60, // expires in 24 hours,
+        httpOnly: true,
+        secure: true
+    });
 }
